@@ -5,6 +5,8 @@ import re
 import urllib.request
 
 YEAR = 2026
+DEFAULT_START_TIME = "20:00"
+DEFAULT_DURATION_HOURS = 3
 WIKI_URL = "https://zh.wikipedia.org/wiki/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E8%81%8C%E4%B8%9A%E8%81%94%E8%B5%9B2026%E5%B9%B4%E5%A4%8F%E5%AD%A3%E8%B5%9B"
 KPL_URL = "https://pvp.qq.com/match/kpl/"
 AG_NAMES = {"成都AG超玩会", "成都AG超玩會"}
@@ -18,8 +20,8 @@ FALLBACK_EVENTS = [
     ("20260619", "成都AG超玩会", "KSG", "已完赛：成都AG超玩会 3-1 KSG"),
     ("20260621", "成都AG超玩会", "WST", "已完赛：成都AG超玩会 3-1 WST"),
     ("20260627", "成都AG超玩会", "济南RW侠", "已完赛：成都AG超玩会 0-3 济南RW侠"),
-    ("20260703", "成都AG超玩会", "重庆狼队", "具体开赛时间以官方赛程为准"),
-    ("20260705", "成都AG超玩会", "深圳DYG", "具体开赛时间以官方赛程为准"),
+    ("20260703", "成都AG超玩会", "重庆狼队", ""),
+    ("20260705", "成都AG超玩会", "深圳DYG", ""),
 ]
 
 
@@ -91,10 +93,7 @@ def parse_events(tokens):
             continue
         home = norm_team(team1)
         away = norm_team(team2)
-        if score1 is not None and score2 is not None:
-            note = f"已完赛：{home} {score1}-{score2} {away}"
-        else:
-            note = "具体开赛时间以官方赛程为准"
+        note = f"已完赛：{home} {score1}-{score2} {away}" if score1 is not None and score2 is not None else ""
         key = (current_date, home, away)
         events[key] = (current_date, home, away, note)
     return sorted(events.values(), key=lambda x: (x[0], x[1], x[2]))
@@ -107,6 +106,13 @@ def ics_escape(text):
 def make_uid(date, home, away):
     slug = re.sub(r"[^A-Za-z0-9]+", "-", f"{date}-{home}-{away}").strip("-").lower()
     return f"kpl-ag-{slug}@calistays.github"
+
+
+def event_times(date):
+    start_hour, start_minute = map(int, DEFAULT_START_TIME.split(":"))
+    start = dt.datetime.strptime(date, "%Y%m%d").replace(hour=start_hour, minute=start_minute)
+    end = start + dt.timedelta(hours=DEFAULT_DURATION_HOURS)
+    return start.strftime("%Y%m%dT%H%M%S"), end.strftime("%Y%m%dT%H%M%S")
 
 
 def build_calendar(events):
@@ -132,22 +138,24 @@ def build_calendar(events):
         "END:VTIMEZONE",
     ]
     for date, home, away, note in events:
-        start = dt.datetime.strptime(date, "%Y%m%d").date()
-        end = start + dt.timedelta(days=1)
+        start, end = event_times(date)
         original_title = f"KPL：{home} vs {away}"
         summary = f"AG vs {opponent_for(home, away)}"
-        description = f"原标题：{original_title}。2026 KPL夏季赛。{note}。观赛入口：{KPL_URL}"
+        detail = f"原标题：{original_title}。开赛时间：{DEFAULT_START_TIME}（北京时间）。2026 KPL夏季赛。"
+        if note:
+            detail += note + "。"
+        detail += f"观赛入口：{KPL_URL}"
         lines.extend([
             "BEGIN:VEVENT",
             f"UID:{make_uid(date, home, away)}",
             f"DTSTAMP:{stamp}",
             f"SUMMARY:{ics_escape(summary)}",
-            f"DTSTART;VALUE=DATE:{date}",
-            f"DTEND;VALUE=DATE:{end.strftime('%Y%m%d')}",
+            f"DTSTART;TZID=Asia/Shanghai:{start}",
+            f"DTEND;TZID=Asia/Shanghai:{end}",
             "STATUS:CONFIRMED",
-            "TRANSP:TRANSPARENT",
+            "TRANSP:OPAQUE",
             f"URL:{KPL_URL}",
-            f"DESCRIPTION:{ics_escape(description)}",
+            f"DESCRIPTION:{ics_escape(detail)}",
             "END:VEVENT",
         ])
     lines.append("END:VCALENDAR")
