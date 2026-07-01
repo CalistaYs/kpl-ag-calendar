@@ -1,0 +1,36 @@
+name: Update KPL AG calendar
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-calendar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Refresh calendar
+        run: python update_calendar.py
+
+      - name: Commit updated calendar
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- calendar.ics; then
+            echo "calendar.ics is already up to date"
+          else
+            git add calendar.ics
+            git commit -m "Update Chengdu AG calendar"
+            git push
+          fi
