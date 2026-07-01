@@ -44,7 +44,19 @@ def is_team(token):
 
 
 def norm_team(team):
-    return team.replace("會", "会").replace("重慶", "重庆").replace("濟南", "济南").replace("武漢", "武汉").replace("廣州", "广州").replace("長沙", "长沙").replace("競", "竞")
+    return (
+        team.replace("會", "会")
+        .replace("重慶", "重庆")
+        .replace("濟南", "济南")
+        .replace("武漢", "武汉")
+        .replace("廣州", "广州")
+        .replace("長沙", "长沙")
+        .replace("競", "竞")
+    )
+
+
+def opponent_for(home, away):
+    return away if home == "成都AG超玩会" else home
 
 
 def parse_events(tokens):
@@ -79,7 +91,6 @@ def parse_events(tokens):
             continue
         home = norm_team(team1)
         away = norm_team(team2)
-        opponent = away if home == "成都AG超玩会" else home
         if score1 is not None and score2 is not None:
             note = f"已完赛：{home} {score1}-{score2} {away}"
         else:
@@ -90,8 +101,7 @@ def parse_events(tokens):
 
 
 def ics_escape(text):
-    return text.replace("\", "\\").replace(";", "\;").replace(",", "\,").replace("
-", "\n")
+    return text.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
 
 
 def make_uid(date, home, away):
@@ -124,23 +134,24 @@ def build_calendar(events):
     for date, home, away, note in events:
         start = dt.datetime.strptime(date, "%Y%m%d").date()
         end = start + dt.timedelta(days=1)
+        original_title = f"KPL：{home} vs {away}"
+        summary = f"AG vs {opponent_for(home, away)}"
+        description = f"原标题：{original_title}。2026 KPL夏季赛。{note}。观赛入口：{KPL_URL}"
         lines.extend([
             "BEGIN:VEVENT",
             f"UID:{make_uid(date, home, away)}",
             f"DTSTAMP:{stamp}",
-            f"SUMMARY:{ics_escape('KPL：' + home + ' vs ' + away)}",
+            f"SUMMARY:{ics_escape(summary)}",
             f"DTSTART;VALUE=DATE:{date}",
             f"DTEND;VALUE=DATE:{end.strftime('%Y%m%d')}",
             "STATUS:CONFIRMED",
             "TRANSP:TRANSPARENT",
             f"URL:{KPL_URL}",
-            f"DESCRIPTION:{ics_escape('2026 KPL夏季赛。' + note + '。观赛入口：' + KPL_URL)}",
+            f"DESCRIPTION:{ics_escape(description)}",
             "END:VEVENT",
         ])
     lines.append("END:VCALENDAR")
-    return "
-".join(lines) + "
-"
+    return "\n".join(lines) + "\n"
 
 
 def main():
@@ -150,8 +161,7 @@ def main():
     events = parse_events(extract_tokens(page))
     if len(events) < len(FALLBACK_EVENTS):
         events = FALLBACK_EVENTS
-    with open("calendar.ics", "w", encoding="utf-8", newline="
-") as f:
+    with open("calendar.ics", "w", encoding="utf-8", newline="\n") as f:
         f.write(build_calendar(events))
 
 
