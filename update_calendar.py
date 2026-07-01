@@ -7,6 +7,7 @@ import urllib.request
 YEAR = 2026
 DEFAULT_START_TIME = "20:00"
 DEFAULT_DURATION_HOURS = 3
+ALARM_OFFSETS = ["-PT1H", "-PT30M"]
 WIKI_URL = "https://zh.wikipedia.org/wiki/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E8%81%8C%E4%B8%9A%E8%81%94%E8%B5%9B2026%E5%B9%B4%E5%A4%8F%E5%AD%A3%E8%B5%9B"
 KPL_URL = "https://pvp.qq.com/match/kpl/"
 AG_NAMES = {"成都AG超玩会", "成都AG超玩會"}
@@ -15,6 +16,11 @@ TEAMS = [
     "WST", "SYG", "北京JDG", "广州TTG", "廣州TTG", "长沙TES.A", "長沙TES.A", "西安WE",
     "佛山DRG", "北京WB", "杭州LGD.NBW", "武汉eStarPro", "武漢eStarPro", "上海EDG.M",
     "南通Hero久竞", "南通Hero久競", "上海RNG.M"
+]
+# 各战队队名前缀所在城市，用于生成去掉城市前缀后的简称（如“成都AG超玩会”→“AG超玩会”）。
+CITY_PREFIXES = [
+    "成都", "重庆", "北京", "上海", "广州", "武汉", "佛山", "济南",
+    "苏州", "西安", "长沙", "南京", "南通", "杭州", "深圳",
 ]
 FALLBACK_EVENTS = [
     ("20260619", "成都AG超玩会", "KSG", "已完赛：成都AG超玩会 3-1 KSG"),
@@ -55,6 +61,18 @@ def norm_team(team):
         .replace("長沙", "长沙")
         .replace("競", "竞")
     )
+
+
+def short_team_name(team):
+    """去掉城市前缀，返回队伍简称，例如 成都AG超玩会 -> AG超玩会，重庆狼队 -> 狼队。"""
+    name = norm_team(team)
+    for city in CITY_PREFIXES:
+        if name.startswith(city) and name != city:
+            return name[len(city):]
+    return name
+
+
+AG_SHORT_NAME = short_team_name("成都AG超玩会")
 
 
 def opponent_for(home, away):
@@ -139,12 +157,17 @@ def build_calendar(events):
     ]
     for date, home, away, note in events:
         start, end = event_times(date)
+        opponent_short = short_team_name(opponent_for(home, away))
+        summary = f"{AG_SHORT_NAME} VS {opponent_short}"
         original_title = f"KPL：{home} vs {away}"
-        summary = f"AG vs {opponent_for(home, away)}"
-        detail = f"原标题：{original_title}。开赛时间：{DEFAULT_START_TIME}（北京时间）。2026 KPL夏季赛。"
+        detail = (
+            f"原标题：{original_title}。开赛时间：{DEFAULT_START_TIME}（北京时间 GMT+8，"
+            f"具体时间以官方公布为准）。2026 KPL夏季赛。"
+        )
         if note:
             detail += note + "。"
         detail += f"观赛入口：{KPL_URL}"
+        alarm_description = f"{summary} 即将开始"
         lines.extend([
             "BEGIN:VEVENT",
             f"UID:{make_uid(date, home, away)}",
@@ -156,10 +179,18 @@ def build_calendar(events):
             "TRANSP:OPAQUE",
             f"URL:{KPL_URL}",
             f"DESCRIPTION:{ics_escape(detail)}",
-            "END:VEVENT",
         ])
+        for offset in ALARM_OFFSETS:
+            lines.extend([
+                "BEGIN:VALARM",
+                "ACTION:DISPLAY",
+                f"DESCRIPTION:{ics_escape(alarm_description)}",
+                f"TRIGGER:{offset}",
+                "END:VALARM",
+            ])
+        lines.append("END:VEVENT")
     lines.append("END:VCALENDAR")
-    return "\n".join(lines) + "\n"
+    return "\r\n".join(lines) + "\r\n"
 
 
 def main():
