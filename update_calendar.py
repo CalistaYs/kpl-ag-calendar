@@ -72,7 +72,8 @@ def short_team_name(team):
     return name
 
 
-AG_SHORT_NAME = short_team_name("成都AG超玩会")
+# 日历标题里 AG 一方固定显示为 "AG"（而不是 "AG超玩会"）。
+AG_SHORT_NAME = "AG"
 
 
 def opponent_for(home, away):

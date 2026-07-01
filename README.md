@@ -4,14 +4,15 @@ This repository publishes a subscribable calendar for Chengdu AG (AG超玩会) K
 
 ## 队伍名称
 
-日历标题统一使用去掉城市前缀的队伍简称，例如：
+日历标题里，AG 一方固定显示为 `AG`；对手统一使用去掉城市前缀的队伍简称，例如：
 
-- 成都AG超玩会 → AG超玩会
 - 重庆狼队 → 狼队
+- 苏州KSG → KSG
+- 济南RW侠 → RW侠
 - 北京WB → WB
 - 上海EDG.M → EDG.M
 
-比赛标题格式固定为 `AG超玩会 VS 对手简称`，例如 `AG超玩会 VS 狼队`。城市前缀的去除逻辑在
+比赛标题格式固定为 `AG VS 对手简称`，例如 `AG VS 狼队`、`AG VS KSG`。对手队名的城市前缀去除逻辑在
 [`update_calendar.py`](update_calendar.py) 的 `CITY_PREFIXES` 列表和 `short_team_name()` 函数中维护，
 如果出现新战队或新城市前缀，在 `CITY_PREFIXES` 中补充即可。
 
