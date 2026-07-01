@@ -18,57 +18,57 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:kpl-ag-2026-summer-20260619-ksg@calistays.github
-DTSTAMP:20260701T083000Z
+DTSTAMP:20260701T084000Z
 SUMMARY:AG vs KSG
-DTSTART;VALUE=DATE:20260619
-DTEND;VALUE=DATE:20260620
+DTSTART;TZID=Asia/Shanghai:20260619T200000
+DTEND;TZID=Asia/Shanghai:20260619T230000
 STATUS:CONFIRMED
-TRANSP:TRANSPARENT
+TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
-DESCRIPTION:原标题：KPL：成都AG超玩会 vs KSG。2026 KPL夏季赛常规赛第一轮。已完赛：成都AG超玩会 3-1 KSG。观赛/回放：https://pvp.qq.com/match/kpl/
+DESCRIPTION:原标题：KPL：成都AG超玩会 vs KSG。开赛时间：20:00（北京时间）。2026 KPL夏季赛常规赛第一轮。已完赛：成都AG超玩会 3-1 KSG。观赛/回放：https://pvp.qq.com/match/kpl/
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-ag-2026-summer-20260621-wst@calistays.github
-DTSTAMP:20260701T083000Z
+DTSTAMP:20260701T084000Z
 SUMMARY:AG vs WST
-DTSTART;VALUE=DATE:20260621
-DTEND;VALUE=DATE:20260622
+DTSTART;TZID=Asia/Shanghai:20260621T200000
+DTEND;TZID=Asia/Shanghai:20260621T230000
 STATUS:CONFIRMED
-TRANSP:TRANSPARENT
+TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
-DESCRIPTION:原标题：KPL：成都AG超玩会 vs WST。2026 KPL夏季赛常规赛第一轮。已完赛：成都AG超玩会 3-1 WST。观赛/回放：https://pvp.qq.com/match/kpl/
+DESCRIPTION:原标题：KPL：成都AG超玩会 vs WST。开赛时间：20:00（北京时间）。2026 KPL夏季赛常规赛第一轮。已完赛：成都AG超玩会 3-1 WST。观赛/回放：https://pvp.qq.com/match/kpl/
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-ag-2026-summer-20260627-rw@calistays.github
-DTSTAMP:20260701T083000Z
+DTSTAMP:20260701T084000Z
 SUMMARY:AG vs 济南RW侠
-DTSTART;VALUE=DATE:20260627
-DTEND;VALUE=DATE:20260628
+DTSTART;TZID=Asia/Shanghai:20260627T200000
+DTEND;TZID=Asia/Shanghai:20260627T230000
 STATUS:CONFIRMED
-TRANSP:TRANSPARENT
+TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
-DESCRIPTION:原标题：KPL：成都AG超玩会 vs 济南RW侠。2026 KPL夏季赛常规赛第一轮。已完赛：成都AG超玩会 0-3 济南RW侠。观赛/回放：https://pvp.qq.com/match/kpl/
+DESCRIPTION:原标题：KPL：成都AG超玩会 vs 济南RW侠。开赛时间：20:00（北京时间）。2026 KPL夏季赛常规赛第一轮。已完赛：成都AG超玩会 0-3 济南RW侠。观赛/回放：https://pvp.qq.com/match/kpl/
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-ag-2026-summer-20260703-wolves@calistays.github
-DTSTAMP:20260701T083000Z
+DTSTAMP:20260701T084000Z
 SUMMARY:AG vs 重庆狼队
-DTSTART;VALUE=DATE:20260703
-DTEND;VALUE=DATE:20260704
+DTSTART;TZID=Asia/Shanghai:20260703T200000
+DTEND;TZID=Asia/Shanghai:20260703T230000
 STATUS:CONFIRMED
-TRANSP:TRANSPARENT
+TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
-DESCRIPTION:原标题：KPL：成都AG超玩会 vs 重庆狼队。2026 KPL夏季赛常规赛第一轮。具体开赛时间以官方赛程为准。观赛：https://pvp.qq.com/match/kpl/
+DESCRIPTION:原标题：KPL：成都AG超玩会 vs 重庆狼队。开赛时间：20:00（北京时间）。2026 KPL夏季赛常规赛第一轮。观赛：https://pvp.qq.com/match/kpl/
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-ag-2026-summer-20260705-dyg@calistays.github
-DTSTAMP:20260701T083000Z
+DTSTAMP:20260701T084000Z
 SUMMARY:AG vs 深圳DYG
-DTSTART;VALUE=DATE:20260705
-DTEND;VALUE=DATE:20260706
+DTSTART;TZID=Asia/Shanghai:20260705T200000
+DTEND;TZID=Asia/Shanghai:20260705T230000
 STATUS:CONFIRMED
-TRANSP:TRANSPARENT
+TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
-DESCRIPTION:原标题：KPL：成都AG超玩会 vs 深圳DYG。2026 KPL夏季赛常规赛第一轮。具体开赛时间以官方赛程为准。观赛：https://pvp.qq.com/match/kpl/
+DESCRIPTION:原标题：KPL：成都AG超玩会 vs 深圳DYG。开赛时间：20:00（北京时间）。2026 KPL夏季赛常规赛第一轮。观赛：https://pvp.qq.com/match/kpl/
 END:VEVENT
 END:VCALENDAR
