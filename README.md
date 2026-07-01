@@ -34,13 +34,19 @@ https://raw.githubusercontent.com/CalistaYs/kpl-ag-calendar/main/calendar.ics
 3. 粘贴上面的链接，保存即可。之后每次仓库更新 `calendar.ics`，订阅的日历会自动同步（iOS 有自己的刷新间隔，也可以在日历账户设置里手动设置刷新频率）。
 4. 打开任意一场比赛，应能看到具体开赛时间（本地时间，并标注 GMT+8 对应的北京时间）以及开赛前 1 小时和 30 分钟的提醒。
 
-## 更新方式
+## 更新方式与赛季自动跟随
 
-`update_calendar.py` 会抓取 Wikipedia 赛程页并重新生成 `calendar.ics`；GitHub Actions
-（[`.github/workflows/update-calendar.yml`](.github/workflows/update-calendar.yml)）每 6 小时自动运行一次并提交变更。
+`update_calendar.py` 每次运行都会先访问 KPL 联赛总览页
+[王者荣耀职业联赛](https://zh.wikipedia.org/wiki/王者荣耀职业联赛)，
+从信息框里的“当前赛季、赛事或届次”一行自动解析出当前赛季的维基页面链接和年份，再去抓取那一页的赛程。
+因此春季赛/夏季赛切换、跨年份都不需要手动改代码或改链接。
 
-Source page:
-https://zh.wikipedia.org/wiki/王者荣耀职业联赛2026年夏季赛
+只有在自动解析失败（比如维基页面结构变化、网络问题）时，脚本才会退回到代码里写死的
+`FALLBACK_WIKI_URL`（当前指向 2026 年夏季赛）；如果连兜底页面也解析不到比赛，且不是这一
+写死的赛季，脚本会保留现有 `calendar.ics` 不做任何改动，不会用旧赛季数据冒充新赛季。
+
+GitHub Actions（[`.github/workflows/update-calendar.yml`](.github/workflows/update-calendar.yml)）
+每 6 小时自动运行一次并提交变更。
 
 Official KPL viewing page:
 https://pvp.qq.com/match/kpl/

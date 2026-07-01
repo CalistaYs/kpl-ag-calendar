@@ -4,11 +4,16 @@ import html
 import re
 import urllib.request
 
-YEAR = 2026
 DEFAULT_START_TIME = "20:00"
 DEFAULT_DURATION_HOURS = 3
 ALARM_OFFSETS = ["-PT1H", "-PT30M"]
-WIKI_URL = "https://zh.wikipedia.org/wiki/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E8%81%8C%E4%B8%9A%E8%81%94%E8%B5%9B2026%E5%B9%B4%E5%A4%8F%E5%AD%A3%E8%B5%9B"
+# 联赛总览页：始终存在，信息框里有一行“当前赛季、赛事或届次”并链接到当前赛季页面。
+# 每次运行都先读这个页面找到当前赛季链接，这样春/夏季赛切换、跨年份都不需要改代码。
+MAIN_WIKI_URL = "https://zh.wikipedia.org/wiki/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E8%81%8C%E4%B8%9A%E8%81%94%E8%B5%9B"
+# 仅作为“当前赛季”自动发现失败时的最后兜底，指向已知能正常解析的一个赛季页面。
+FALLBACK_WIKI_URL = "https://zh.wikipedia.org/wiki/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E8%81%8C%E4%B8%9A%E8%81%94%E8%B5%9B2026%E5%B9%B4%E5%A4%8F%E5%AD%A3%E8%B5%9B"
+FALLBACK_YEAR = 2026
+FALLBACK_SEASON_LABEL = "2026年夏季赛"
 KPL_URL = "https://pvp.qq.com/match/kpl/"
 AG_NAMES = {"成都AG超玩会", "成都AG超玩會"}
 TEAMS = [
@@ -22,6 +27,8 @@ CITY_PREFIXES = [
     "成都", "重庆", "北京", "上海", "广州", "武汉", "佛山", "济南",
     "苏州", "西安", "长沙", "南京", "南通", "杭州", "深圳",
 ]
+# 2026年夏季赛的已知数据，仅在“当前赛季”自动发现失败、且发现结果仍是这一季时用作兜底。
+# 不代表未来赛季的赛程，未来赛季应完全依赖自动抓取。
 FALLBACK_EVENTS = [
     ("20260619", "成都AG超玩会", "KSG", "已完赛：成都AG超玩会 3-1 KSG"),
     ("20260621", "成都AG超玩会", "WST", "已完赛：成都AG超玩会 3-1 WST"),
@@ -80,7 +87,7 @@ def opponent_for(home, away):
     return away if home == "成都AG超玩会" else home
 
 
-def parse_events(tokens):
+def parse_events(tokens, year):
     events = {}
     current_date = None
     date_re = re.compile(r"^(\d{1,2})月(\d{1,2})日$")
@@ -88,7 +95,7 @@ def parse_events(tokens):
         date_match = date_re.match(token)
         if date_match:
             month, day = map(int, date_match.groups())
-            current_date = f"{YEAR}{month:02d}{day:02d}"
+            current_date = f"{year}{month:02d}{day:02d}"
             continue
         if not current_date or not is_team(token):
             continue
@@ -134,7 +141,7 @@ def event_times(date):
     return start.strftime("%Y%m%dT%H%M%S"), end.strftime("%Y%m%dT%H%M%S")
 
 
-def build_calendar(events):
+def build_calendar(events, season_label):
     stamp = dt.datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
     lines = [
         "BEGIN:VCALENDAR",
@@ -163,7 +170,7 @@ def build_calendar(events):
         original_title = f"KPL：{home} vs {away}"
         detail = (
             f"原标题：{original_title}。开赛时间：{DEFAULT_START_TIME}（北京时间 GMT+8，"
-            f"具体时间以官方公布为准）。2026 KPL夏季赛。"
+            f"具体时间以官方公布为准）。KPL {season_label}。"
         )
         if note:
             detail += note + "。"
@@ -194,15 +201,62 @@ def build_calendar(events):
     return "\r\n".join(lines) + "\r\n"
 
 
-def main():
-    req = urllib.request.Request(WIKI_URL, headers={"User-Agent": "kpl-ag-calendar/1.0"})
+def fetch_page(url):
+    req = urllib.request.Request(url, headers={"User-Agent": "kpl-ag-calendar/1.0"})
     with urllib.request.urlopen(req, timeout=30) as response:
-        page = response.read().decode("utf-8", errors="replace")
-    events = parse_events(extract_tokens(page))
-    if len(events) < len(FALLBACK_EVENTS):
+        return response.read().decode("utf-8", errors="replace")
+
+
+CURRENT_SEASON_RE = re.compile(
+    r'当前赛季、赛事或届次：</b>\s*<br\s*/?>\s*<a href="([^"]+)"[^>]*title="([^"]+)"'
+)
+
+
+def discover_current_season():
+    """从联赛总览页解析出"当前赛季"链接，让脚本自动跟随最新赛季（春/夏季赛、跨年份均适用）。
+
+    返回 (wiki_url, year, season_label)；解析失败（页面结构变化、网络问题等）时返回 None，
+    调用方会退回到 FALLBACK_WIKI_URL。
+    """
+    try:
+        page = fetch_page(MAIN_WIKI_URL)
+    except Exception:
+        return None
+    match = CURRENT_SEASON_RE.search(page)
+    if not match:
+        return None
+    href, title = match.group(1), html.unescape(match.group(2))
+    year_match = re.search(r"(\d{4})年", title)
+    if not year_match:
+        return None
+    year = int(year_match.group(1))
+    season_label = title.replace("王者荣耀职业联赛", "")
+    return f"https://zh.wikipedia.org{href}", year, season_label
+
+
+def main():
+    discovered = discover_current_season()
+    if discovered:
+        wiki_url, year, season_label = discovered
+    else:
+        wiki_url, year, season_label = FALLBACK_WIKI_URL, FALLBACK_YEAR, FALLBACK_SEASON_LABEL
+
+    try:
+        page = fetch_page(wiki_url)
+        events = parse_events(extract_tokens(page), year)
+    except Exception:
+        events = []
+
+    if not events:
+        if year != FALLBACK_YEAR or season_label != FALLBACK_SEASON_LABEL:
+            # 新赛季暂时抓不到 AG 的比赛（例如赛程还未公布），不要用旧赛季的兜底数据
+            # 冒充新赛季，保留现有 calendar.ics 不动即可。
+            print(f"No AG matches found for {season_label}; leaving calendar.ics unchanged.")
+            return
         events = FALLBACK_EVENTS
+
     with open("calendar.ics", "w", encoding="utf-8", newline="\n") as f:
-        f.write(build_calendar(events))
+        f.write(build_calendar(events, season_label))
 
 
 if __name__ == "__main__":
