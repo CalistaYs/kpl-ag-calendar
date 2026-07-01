@@ -29,12 +29,14 @@ CITY_PREFIXES = [
 ]
 # 2026年夏季赛的已知数据，仅在“当前赛季”自动发现失败、且发现结果仍是这一季时用作兜底。
 # 不代表未来赛季的赛程，未来赛季应完全依赖自动抓取。
+# 字段：日期, 主场, 客场, 主场比分, 客场比分, 比赛地点, 本赛季双方第几次交手
+# Wikipedia 赛程表没有地点列，因此地点留空；比分未知（未开赛）时用 None，不编造。
 FALLBACK_EVENTS = [
-    ("20260619", "成都AG超玩会", "KSG", "已完赛：成都AG超玩会 3-1 KSG"),
-    ("20260621", "成都AG超玩会", "WST", "已完赛：成都AG超玩会 3-1 WST"),
-    ("20260627", "成都AG超玩会", "济南RW侠", "已完赛：成都AG超玩会 0-3 济南RW侠"),
-    ("20260703", "成都AG超玩会", "重庆狼队", ""),
-    ("20260705", "成都AG超玩会", "深圳DYG", ""),
+    ("20260619", "成都AG超玩会", "KSG", 3, 1, "", 1),
+    ("20260621", "成都AG超玩会", "WST", 3, 1, "", 1),
+    ("20260627", "成都AG超玩会", "济南RW侠", 0, 3, "", 1),
+    ("20260703", "成都AG超玩会", "重庆狼队", None, None, "", 1),
+    ("20260705", "成都AG超玩会", "深圳DYG", None, None, "", 1),
 ]
 
 
@@ -89,6 +91,7 @@ def opponent_for(home, away):
 
 def parse_events(tokens, year):
     events = {}
+    pair_occurrence = {}
     current_date = None
     date_re = re.compile(r"^(\d{1,2})月(\d{1,2})日$")
     for i, token in enumerate(tokens):
@@ -119,9 +122,18 @@ def parse_events(tokens, year):
             continue
         home = norm_team(team1)
         away = norm_team(team2)
-        note = f"已完赛：{home} {score1}-{score2} {away}" if score1 is not None and score2 is not None else ""
         key = (current_date, home, away)
-        events[key] = (current_date, home, away, note)
+        if key in events:
+            continue
+        # Wikipedia 赛程表没有地点列，暂时留空；不编造地点。
+        location = ""
+        home_score = int(score1) if score1 is not None else None
+        away_score = int(score2) if score2 is not None else None
+        pair_key = tuple(sorted([home, away]))
+        pair_occurrence[pair_key] = pair_occurrence.get(pair_key, 0) + 1
+        events[key] = (
+            current_date, home, away, home_score, away_score, location, pair_occurrence[pair_key]
+        )
     return sorted(events.values(), key=lambda x: (x[0], x[1], x[2]))
 
 
@@ -129,8 +141,11 @@ def ics_escape(text):
     return text.replace("\\", "\\\\").replace(";", "\\;").replace(",", "\\,").replace("\n", "\\n")
 
 
-def make_uid(date, home, away):
-    slug = re.sub(r"[^A-Za-z0-9]+", "-", f"{date}-{home}-{away}").strip("-").lower()
+def make_uid(season_label, home, away, occurrence):
+    # 特意不用日期做 UID：这样比赛延期改期只更新 DTSTART，不会在订阅日历里变成新事件。
+    # occurrence 用来区分本赛季双方多次交手（如常规赛+季后赛再战）。
+    pair = "-".join(sorted([home, away]))
+    slug = re.sub(r"[^A-Za-z0-9]+", "-", f"{season_label}-{pair}-{occurrence}").strip("-").lower()
     return f"kpl-ag-{slug}@calistays.github"
 
 
@@ -163,22 +178,30 @@ def build_calendar(events, season_label):
         "END:STANDARD",
         "END:VTIMEZONE",
     ]
-    for date, home, away, note in events:
+    for date, home, away, home_score, away_score, location, occurrence in events:
         start, end = event_times(date)
         opponent_short = short_team_name(opponent_for(home, away))
         summary = f"{AG_SHORT_NAME} VS {opponent_short}"
-        original_title = f"KPL：{home} vs {away}"
-        detail = (
-            f"原标题：{original_title}。开赛时间：{DEFAULT_START_TIME}（北京时间 GMT+8，"
-            f"具体时间以官方公布为准）。KPL {season_label}。"
-        )
-        if note:
-            detail += note + "。"
-        detail += f"观赛入口：{KPL_URL}"
+
+        desc_lines = [
+            f"KPL {season_label}。",
+            f"{home} vs {away}。",
+            f"开赛时间：{DEFAULT_START_TIME}（北京时间 GMT+8，具体时间以官方公布为准）。",
+        ]
+        if location:
+            desc_lines.append(f"比赛地点：{location}")
+        if home_score is not None and away_score is not None:
+            is_ag_home = home in AG_NAMES
+            ag_score = home_score if is_ag_home else away_score
+            opp_score = away_score if is_ag_home else home_score
+            desc_lines.append(f"比赛结果：{AG_SHORT_NAME} {ag_score}:{opp_score} {opponent_short}")
+        desc_lines.append(f"官方观赛入口：{KPL_URL}")
+        detail = "\n".join(desc_lines)
+
         alarm_description = f"{summary} 即将开始"
         lines.extend([
             "BEGIN:VEVENT",
-            f"UID:{make_uid(date, home, away)}",
+            f"UID:{make_uid(season_label, home, away, occurrence)}",
             f"DTSTAMP:{stamp}",
             f"SUMMARY:{ics_escape(summary)}",
             f"DTSTART;TZID=Asia/Shanghai:{start}",
@@ -186,8 +209,10 @@ def build_calendar(events, season_label):
             "STATUS:CONFIRMED",
             "TRANSP:OPAQUE",
             f"URL:{KPL_URL}",
-            f"DESCRIPTION:{ics_escape(detail)}",
         ])
+        if location:
+            lines.append(f"LOCATION:{ics_escape(location)}")
+        lines.append(f"DESCRIPTION:{ics_escape(detail)}")
         for offset in ALARM_OFFSETS:
             lines.extend([
                 "BEGIN:VALARM",
