@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""把校验通过的比赛列表渲染成 RFC5545 格式的 .ics 文本。"""
+"""把校验通过的比赛列表渲染成 RFC5545 格式的 .ics 文本，并支持跨赛季合并。"""
 import datetime as dt
+import re
 
 from match_parser import AG_NAME, AG_SHORT_NAME, opponent_of, short_team_name
 
@@ -100,3 +101,51 @@ def build_calendar(matches, dtstamp=None):
         lines.append("END:VEVENT")
     lines.append("END:VCALENDAR")
     return "\r\n".join(lines) + "\r\n"
+
+
+_VEVENT_RE = re.compile(r"BEGIN:VEVENT\r?\n.*?END:VEVENT\r?\n", re.S)
+_UID_RE = re.compile(r"^UID:(.+?)\r?$", re.M)
+_DTSTART_RE = re.compile(r"^DTSTART[^:]*:(\d{8}T\d{6})", re.M)
+
+
+def _extract_vevents(ics_text):
+    """把一段 ICS 文本按 UID 拆成 {uid: 原始 VEVENT 文本块} 的字典。"""
+    blocks = {}
+    for block in _VEVENT_RE.findall(ics_text):
+        uid_match = _UID_RE.search(block)
+        if uid_match:
+            blocks[uid_match.group(1).strip()] = block
+    return blocks
+
+
+def _vevent_sort_key(block):
+    match = _DTSTART_RE.search(block)
+    return match.group(1) if match else ""
+
+
+def merge_calendars(existing_ics_text, new_ics_text, season_id):
+    """把这次新抓到的比赛（new_ics_text，某一个赛季 season_id 的完整赛程）合并进
+    已有日历（existing_ics_text）。
+
+    - 不属于 season_id 的历史比赛（UID 里的 scheduleid 前缀是其它赛季）——也就是
+      这次请求根本没有触及、已经切换过去的赛季——原样保留，不会因为跨赛季就从
+      日历里消失；未被触及的历史事件也保留原有的 DTSTAMP，不会被当成"刚生成"。
+    - 属于 season_id 的比赛，用这次抓到的结果完整替换旧版本：因为每次都是拉取
+      "该赛季的全部比赛"（不是增量），所以这次没有出现的旧记录（比如被取消的
+      比赛）应该跟着消失，不能残留成永远删不掉的僵尸事件；同 UID 有更新的（时间/
+      地点/比分变化）自然覆盖成新版本；新出现的比赛正常加入。
+    """
+    existing_blocks = _extract_vevents(existing_ics_text)
+    new_blocks = _extract_vevents(new_ics_text)
+
+    season_uid_prefix = f"kpl-{season_id.lower()}"
+    kept_existing = {
+        uid: block
+        for uid, block in existing_blocks.items()
+        if not uid.startswith(season_uid_prefix)
+    }
+    merged = {**kept_existing, **new_blocks}
+
+    ordered_blocks = sorted(merged.values(), key=_vevent_sort_key)
+    header, _, _ = new_ics_text.partition("BEGIN:VEVENT")
+    return header + "".join(ordered_blocks) + "END:VCALENDAR\r\n"
