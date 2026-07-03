@@ -5,12 +5,26 @@
 赛程覆盖到已有的 calendar.ics 上。任何一项检查失败，调用方都必须放弃本次更新。
 """
 
-# KPL 目前最长打 BO5，单局比分分量不可能超过这个数；用来拦截"抓到了不相关
-# 数字当成比分"这类错误（历史上出现过 60:60、85:80 这种明显不合理的比分）。
-MAX_PLAUSIBLE_SCORE = 5
+# 赛制信息缺失时的默认比分上限。不写死"KPL 只有 BO5"，因为不同赛事/未来赛制
+# 可能是 BO7、BO9 甚至更长；0-9 只是用来拦截"抓到了不相关数字当成比分"这类
+# 明显错误（历史上出现过 60:60、85:80 这种比分），不代表任何具体赛制规则。
+DEFAULT_MAX_SCORE = 9
 
 MIN_YEAR = 2020
 MAX_YEAR = 2100
+
+
+def max_plausible_score(bo_total):
+    """根据官方给出的赛制（bo_total，例如 BO5 对应 5）推算单方最多可能拿到的比分。
+
+    BOn 赛制里先赢下 ceil(n/2) 局即获胜、比赛立即结束，所以单方最终比分不会超过
+    ceil(n/2)（BO5 最高 3:x，BO7 最高 4:x，BO9 最高 5:x……随赛制变化，不写死数字）。
+    bo_total 不是有效正整数（缺失/未来接口没给）时返回 None，调用方应退回
+    DEFAULT_MAX_SCORE 这个更宽松的默认上限，而不是直接判定比分非法。
+    """
+    if not isinstance(bo_total, int) or bo_total <= 0:
+        return None
+    return (bo_total + 1) // 2
 
 
 def validate_matches(matches, previous_count=None):
@@ -31,13 +45,19 @@ def validate_matches(matches, previous_count=None):
         else:
             seen[uid] = label
 
+        bo_max = max_plausible_score(m.get("bo_total"))
+        max_score = bo_max if bo_max is not None else DEFAULT_MAX_SCORE
         for side, score in (("主队", m["home_score"]), ("客队", m["away_score"])):
             if score is None:
                 continue
             if not isinstance(score, int) or score < 0:
                 errors.append(f"{uid} {side}比分格式非法：{score!r}")
-            elif score > MAX_PLAUSIBLE_SCORE:
-                errors.append(f"{uid} {side}比分超出合理范围（>{MAX_PLAUSIBLE_SCORE}）：{score}")
+            elif score > max_score:
+                basis = f"按 BO{m['bo_total']} 推算" if bo_max is not None else "默认上限"
+                errors.append(
+                    f"{uid} {side}比分 {score} 超出合理范围"
+                    f"（上限 {max_score}，{basis}），很可能是解析错误"
+                )
 
         if not (MIN_YEAR <= m["start"].year <= MAX_YEAR):
             errors.append(f"{uid} 开赛时间不合理：{m['start']}")
