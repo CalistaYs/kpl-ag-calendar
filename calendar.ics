@@ -18,7 +18,7 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m1w1d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS WB
 DTSTART;TZID=Asia/Shanghai:20250212T170000
 DTEND;TZID=Asia/Shanghai:20250212T200000
@@ -26,7 +26,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年春季赛（常规赛 B组）。\n成都AG超玩会 vs 北京WB。\n开赛时间：17:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 WB\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第一轮）。\n成都AG超玩会 vs 北京WB。\n开赛时间：17:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 WB\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS WB 即将开始
@@ -40,7 +40,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m1w4d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS LGD.NBW
 DTSTART;TZID=Asia/Shanghai:20250215T200000
 DTEND;TZID=Asia/Shanghai:20250215T230000
@@ -48,7 +48,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年春季赛（常规赛 B组）。\n成都AG超玩会 vs 杭州LGD.NBW。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 LGD.NBW\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第一轮）。\n成都AG超玩会 vs 杭州LGD.NBW。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 LGD.NBW\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS LGD.NBW 即将开始
@@ -62,7 +62,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m2w3d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS RW侠
 DTSTART;TZID=Asia/Shanghai:20250221T200000
 DTEND;TZID=Asia/Shanghai:20250221T230000
@@ -70,7 +70,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年春季赛（常规赛 B组）。\n成都AG超玩会 vs 济南RW侠。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 1:3 RW侠\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第一轮）。\n成都AG超玩会 vs 济南RW侠。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 1:3 RW侠\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS RW侠 即将开始
@@ -84,7 +84,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m3w3d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS KLG
 DTSTART;TZID=Asia/Shanghai:20250228T200000
 DTEND;TZID=Asia/Shanghai:20250228T230000
@@ -92,7 +92,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年春季赛（常规赛 B组）。\n成都AG超玩会 vs 深圳KLG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 2:3 KLG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第一轮）。\n成都AG超玩会 vs 深圳KLG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 2:3 KLG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS KLG 即将开始
@@ -106,7 +106,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m3w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 情久
 DTSTART;TZID=Asia/Shanghai:20250302T200000
 DTEND;TZID=Asia/Shanghai:20250302T230000
@@ -114,7 +114,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年春季赛（常规赛 B组）。\n成都AG超玩会 vs 情久。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 情久\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第一轮）。\n成都AG超玩会 vs 情久。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 情久\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS 情久 即将开始
@@ -128,7 +128,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m4w3d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS EDG.M
 DTSTART;TZID=Asia/Shanghai:20250308T200000
 DTEND;TZID=Asia/Shanghai:20250308T230000
@@ -136,7 +136,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年春季赛（常规赛 S组）。\n成都AG超玩会 vs 上海EDG.M。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 EDG.M\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第二轮）。\n成都AG超玩会 vs 上海EDG.M。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 EDG.M\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS EDG.M 即将开始
@@ -150,7 +150,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m5w4d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS LGD.NBW
 DTSTART;TZID=Asia/Shanghai:20250315T200000
 DTEND;TZID=Asia/Shanghai:20250315T230000
@@ -158,7 +158,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:杭州
-DESCRIPTION:KPL 2025年春季赛（常规赛 S组）。\n杭州LGD.NBW vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：杭州\n比赛结果：AG 3:0 LGD.NBW\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第二轮）。\n杭州LGD.NBW vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：杭州\n比赛结果：AG 3:0 LGD.NBW\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS LGD.NBW 即将开始
@@ -172,7 +172,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m6w4d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 狼队
 DTSTART;TZID=Asia/Shanghai:20250322T200000
 DTEND;TZID=Asia/Shanghai:20250322T230000
@@ -180,7 +180,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:重庆
-DESCRIPTION:KPL 2025年春季赛（常规赛 S组）。\n重庆狼队 vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：重庆\n比赛结果：AG 3:0 狼队\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第二轮）。\n重庆狼队 vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：重庆\n比赛结果：AG 3:0 狼队\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS 狼队 即将开始
@@ -194,7 +194,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m7w3d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS Hero久竞
 DTSTART;TZID=Asia/Shanghai:20250328T200000
 DTEND;TZID=Asia/Shanghai:20250328T230000
@@ -202,7 +202,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年春季赛（常规赛 S组）。\n成都AG超玩会 vs Hero久竞。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 Hero久竞\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第二轮）。\n成都AG超玩会 vs Hero久竞。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 Hero久竞\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS Hero久竞 即将开始
@@ -216,7 +216,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m7w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS TTG
 DTSTART;TZID=Asia/Shanghai:20250330T200000
 DTEND;TZID=Asia/Shanghai:20250330T230000
@@ -224,7 +224,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年春季赛（常规赛 S组）。\n成都AG超玩会 vs 广州TTG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 TTG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第二轮）。\n成都AG超玩会 vs 广州TTG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 TTG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS TTG 即将开始
@@ -238,7 +238,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m9w1d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS DRG
 DTSTART;TZID=Asia/Shanghai:20250405T200000
 DTEND;TZID=Asia/Shanghai:20250405T230000
@@ -246,7 +246,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年春季赛（常规赛 S组）。\n成都AG超玩会 vs 佛山DRG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 DRG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第三轮）。\n成都AG超玩会 vs 佛山DRG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 DRG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS DRG 即将开始
@@ -260,7 +260,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m10w3d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS WB
 DTSTART;TZID=Asia/Shanghai:20250411T200000
 DTEND;TZID=Asia/Shanghai:20250411T230000
@@ -268,7 +268,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年春季赛（常规赛 S组）。\n成都AG超玩会 vs 北京WB。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 WB\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第三轮）。\n成都AG超玩会 vs 北京WB。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 WB\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS WB 即将开始
@@ -282,7 +282,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m10w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 狼队
 DTSTART;TZID=Asia/Shanghai:20250413T200000
 DTEND;TZID=Asia/Shanghai:20250413T230000
@@ -290,7 +290,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年春季赛（常规赛 S组）。\n成都AG超玩会 vs 重庆狼队。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 狼队\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第三轮）。\n成都AG超玩会 vs 重庆狼队。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 狼队\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS 狼队 即将开始
@@ -304,7 +304,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m11w3d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS EDG.M
 DTSTART;TZID=Asia/Shanghai:20250418T200000
 DTEND;TZID=Asia/Shanghai:20250418T230000
@@ -312,7 +312,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年春季赛（常规赛 S组）。\n成都AG超玩会 vs 上海EDG.M。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 EDG.M\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第三轮）。\n成都AG超玩会 vs 上海EDG.M。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 EDG.M\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS EDG.M 即将开始
@@ -326,7 +326,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m11w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS LGD.NBW
 DTSTART;TZID=Asia/Shanghai:20250420T200000
 DTEND;TZID=Asia/Shanghai:20250420T230000
@@ -334,7 +334,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年春季赛（常规赛 S组）。\n成都AG超玩会 vs 杭州LGD.NBW。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 LGD.NBW\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年春季赛（常规赛第三轮）。\n成都AG超玩会 vs 杭州LGD.NBW。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 LGD.NBW\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS LGD.NBW 即将开始
@@ -348,7 +348,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m12w4d1@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS EDG.M
 DTSTART;TZID=Asia/Shanghai:20250427T190000
 DTEND;TZID=Asia/Shanghai:20250427T220000
@@ -370,7 +370,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m13w2d1@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS WB
 DTSTART;TZID=Asia/Shanghai:20250502T190000
 DTEND;TZID=Asia/Shanghai:20250502T220000
@@ -392,7 +392,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s1m13w5d1@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS DRG
 DTSTART;TZID=Asia/Shanghai:20250510T180000
 DTEND;TZID=Asia/Shanghai:20250510T210000
@@ -414,7 +414,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m1w1d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 常山UUG
 DTSTART;TZID=Asia/Shanghai:20250605T200000
 DTEND;TZID=Asia/Shanghai:20250605T230000
@@ -422,7 +422,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年夏季赛（常规赛 A组）。\n成都AG超玩会 vs 常山UUG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 常山UUG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第一轮）。\n成都AG超玩会 vs 常山UUG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 常山UUG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS 常山UUG 即将开始
@@ -436,7 +436,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m1w3d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS RNG.M
 DTSTART;TZID=Asia/Shanghai:20250607T200000
 DTEND;TZID=Asia/Shanghai:20250607T230000
@@ -444,7 +444,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年夏季赛（常规赛 A组）。\n成都AG超玩会 vs 上海RNG.M。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 RNG.M\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第一轮）。\n成都AG超玩会 vs 上海RNG.M。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 RNG.M\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS RNG.M 即将开始
@@ -458,7 +458,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m2w4d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS eStarPro
 DTSTART;TZID=Asia/Shanghai:20250614T200000
 DTEND;TZID=Asia/Shanghai:20250614T230000
@@ -466,7 +466,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年夏季赛（常规赛 A组）。\n成都AG超玩会 vs 武汉eStarPro。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 eStarPro\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第一轮）。\n成都AG超玩会 vs 武汉eStarPro。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 eStarPro\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS eStarPro 即将开始
@@ -480,7 +480,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m3w3d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 桐乡情久
 DTSTART;TZID=Asia/Shanghai:20250620T200000
 DTEND;TZID=Asia/Shanghai:20250620T230000
@@ -488,7 +488,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年夏季赛（常规赛 A组）。\n成都AG超玩会 vs 桐乡情久。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 桐乡情久\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第一轮）。\n成都AG超玩会 vs 桐乡情久。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 桐乡情久\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS 桐乡情久 即将开始
@@ -502,7 +502,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m3w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS TES.A
 DTSTART;TZID=Asia/Shanghai:20250622T200000
 DTEND;TZID=Asia/Shanghai:20250622T230000
@@ -510,7 +510,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年夏季赛（常规赛 A组）。\n成都AG超玩会 vs 长沙TES.A。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 TES.A\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第一轮）。\n成都AG超玩会 vs 长沙TES.A。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 TES.A\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS TES.A 即将开始
@@ -524,7 +524,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m4w3d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS DRG
 DTSTART;TZID=Asia/Shanghai:20250629T200000
 DTEND;TZID=Asia/Shanghai:20250629T230000
@@ -532,7 +532,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年夏季赛（常规赛 S组）。\n成都AG超玩会 vs 佛山DRG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 DRG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第二轮）。\n成都AG超玩会 vs 佛山DRG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 DRG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS DRG 即将开始
@@ -546,7 +546,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m5w3d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 常山UUG
 DTSTART;TZID=Asia/Shanghai:20250704T200000
 DTEND;TZID=Asia/Shanghai:20250704T230000
@@ -554,7 +554,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年夏季赛（常规赛 S组）。\n成都AG超玩会 vs 常山UUG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 常山UUG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第二轮）。\n成都AG超玩会 vs 常山UUG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 常山UUG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS 常山UUG 即将开始
@@ -568,7 +568,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m5w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS KSG
 DTSTART;TZID=Asia/Shanghai:20250706T200000
 DTEND;TZID=Asia/Shanghai:20250706T230000
@@ -576,7 +576,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年夏季赛（常规赛 S组）。\n成都AG超玩会 vs 苏州KSG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 KSG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第二轮）。\n成都AG超玩会 vs 苏州KSG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 KSG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS KSG 即将开始
@@ -590,7 +590,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m6w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 狼队
 DTSTART;TZID=Asia/Shanghai:20250713T200000
 DTEND;TZID=Asia/Shanghai:20250713T230000
@@ -598,7 +598,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:重庆
-DESCRIPTION:KPL 2025年夏季赛（常规赛 S组）。\n重庆狼队 vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：重庆\n比赛结果：AG 1:3 狼队\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第二轮）。\n重庆狼队 vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：重庆\n比赛结果：AG 1:3 狼队\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS 狼队 即将开始
@@ -612,7 +612,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m7w3d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS TTG
 DTSTART;TZID=Asia/Shanghai:20250717T200000
 DTEND;TZID=Asia/Shanghai:20250717T230000
@@ -620,7 +620,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年夏季赛（常规赛 S组）。\n成都AG超玩会 vs 广州TTG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 2:3 TTG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第二轮）。\n成都AG超玩会 vs 广州TTG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 2:3 TTG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS TTG 即将开始
@@ -634,7 +634,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m8w2d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS LGD.NBW
 DTSTART;TZID=Asia/Shanghai:20250803T200000
 DTEND;TZID=Asia/Shanghai:20250803T230000
@@ -642,7 +642,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:杭州
-DESCRIPTION:KPL 2025年夏季赛（常规赛 S组）。\n杭州LGD.NBW vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：杭州\n比赛结果：AG 3:0 LGD.NBW\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第三轮）。\n杭州LGD.NBW vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：杭州\n比赛结果：AG 3:0 LGD.NBW\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS LGD.NBW 即将开始
@@ -656,7 +656,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m9w4d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS KSG
 DTSTART;TZID=Asia/Shanghai:20250809T200000
 DTEND;TZID=Asia/Shanghai:20250809T230000
@@ -664,7 +664,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年夏季赛（常规赛 S组）。\n成都AG超玩会 vs 苏州KSG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 KSG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第三轮）。\n成都AG超玩会 vs 苏州KSG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 KSG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS KSG 即将开始
@@ -678,7 +678,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m9w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 狼队
 DTSTART;TZID=Asia/Shanghai:20250810T200000
 DTEND;TZID=Asia/Shanghai:20250810T230000
@@ -686,7 +686,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年夏季赛（常规赛 S组）。\n成都AG超玩会 vs 重庆狼队。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 狼队\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第三轮）。\n成都AG超玩会 vs 重庆狼队。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 狼队\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS 狼队 即将开始
@@ -700,7 +700,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m10w2d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS WB
 DTSTART;TZID=Asia/Shanghai:20250814T200000
 DTEND;TZID=Asia/Shanghai:20250814T230000
@@ -708,7 +708,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:北京
-DESCRIPTION:KPL 2025年夏季赛（常规赛 S组）。\n北京WB vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：北京\n比赛结果：AG 2:3 WB\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第三轮）。\n北京WB vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：北京\n比赛结果：AG 2:3 WB\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS WB 即将开始
@@ -722,7 +722,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m10w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS TTG
 DTSTART;TZID=Asia/Shanghai:20250817T200000
 DTEND;TZID=Asia/Shanghai:20250817T230000
@@ -730,7 +730,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2025年夏季赛（常规赛 S组）。\n成都AG超玩会 vs 广州TTG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 TTG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2025年夏季赛（常规赛第三轮）。\n成都AG超玩会 vs 广州TTG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 TTG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS TTG 即将开始
@@ -744,7 +744,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m15w1d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 狼队
 DTSTART;TZID=Asia/Shanghai:20250822T190000
 DTEND;TZID=Asia/Shanghai:20250822T220000
@@ -766,7 +766,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m15w1d9@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS TTG
 DTSTART;TZID=Asia/Shanghai:20250829T190000
 DTEND;TZID=Asia/Shanghai:20250829T220000
@@ -788,7 +788,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s2m15w1d12@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS WB
 DTSTART;TZID=Asia/Shanghai:20250907T180000
 DTEND;TZID=Asia/Shanghai:20250907T210000
@@ -810,7 +810,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s3m1w1d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS EDG.M
 DTSTART;TZID=Asia/Shanghai:20250928T200000
 DTEND;TZID=Asia/Shanghai:20250928T230000
@@ -832,7 +832,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s3m1w3d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS KSG
 DTSTART;TZID=Asia/Shanghai:20250930T200000
 DTEND;TZID=Asia/Shanghai:20250930T230000
@@ -854,7 +854,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s3m1w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS RW侠
 DTSTART;TZID=Asia/Shanghai:20251003T200000
 DTEND;TZID=Asia/Shanghai:20251003T230000
@@ -876,7 +876,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s3m1w6d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS JDG
 DTSTART;TZID=Asia/Shanghai:20251004T200000
 DTEND;TZID=Asia/Shanghai:20251004T230000
@@ -898,7 +898,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s3m2w2d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 桐乡情久
 DTSTART;TZID=Asia/Shanghai:20251006T170000
 DTEND;TZID=Asia/Shanghai:20251006T200000
@@ -920,7 +920,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s3m2w6d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS TES.A
 DTSTART;TZID=Asia/Shanghai:20251011T200000
 DTEND;TZID=Asia/Shanghai:20251011T230000
@@ -942,7 +942,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s3m3w3d1@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS TTG
 DTSTART;TZID=Asia/Shanghai:20251019T180000
 DTEND;TZID=Asia/Shanghai:20251019T210000
@@ -964,7 +964,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s3m3w8d1@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS KSG
 DTSTART;TZID=Asia/Shanghai:20251024T180000
 DTEND;TZID=Asia/Shanghai:20251024T210000
@@ -986,7 +986,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s3m3w11d1@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS WB
 DTSTART;TZID=Asia/Shanghai:20251031T180000
 DTEND;TZID=Asia/Shanghai:20251031T210000
@@ -1008,7 +1008,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2025s3m3w14d1@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 狼队
 DTSTART;TZID=Asia/Shanghai:20251108T173000
 DTEND;TZID=Asia/Shanghai:20251108T203000
@@ -1030,7 +1030,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kcc2025m1w1d4@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS TE溯
 DTSTART;TZID=Asia/Shanghai:20251206T203000
 DTEND;TZID=Asia/Shanghai:20251206T233000
@@ -1052,7 +1052,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kcc2025m2w5d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS RNG.M
 DTSTART;TZID=Asia/Shanghai:20251212T190000
 DTEND;TZID=Asia/Shanghai:20251212T220000
@@ -1074,7 +1074,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kcc2025m3w1d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS WB
 DTSTART;TZID=Asia/Shanghai:20251219T190000
 DTEND;TZID=Asia/Shanghai:20251219T220000
@@ -1096,7 +1096,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kcc2025m3w1d5@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS KSG
 DTSTART;TZID=Asia/Shanghai:20251221T140000
 DTEND;TZID=Asia/Shanghai:20251221T170000
@@ -1118,7 +1118,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kcc2025m3w1d9@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 青训破军
 DTSTART;TZID=Asia/Shanghai:20251226T190000
 DTEND;TZID=Asia/Shanghai:20251226T220000
@@ -1140,7 +1140,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kcc2025m3w1d12@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS Hero久竞
 DTSTART;TZID=Asia/Shanghai:20251227T190000
 DTEND;TZID=Asia/Shanghai:20251227T220000
@@ -1162,7 +1162,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m1w1d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS WB
 DTSTART;TZID=Asia/Shanghai:20260114T200000
 DTEND;TZID=Asia/Shanghai:20260114T230000
@@ -1170,7 +1170,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:北京
-DESCRIPTION:KPL 2026年春季赛（常规赛 S组）。\n北京WB vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：北京\n比赛结果：AG 2:3 WB\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第一轮）。\n北京WB vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：北京\n比赛结果：AG 2:3 WB\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS WB 即将开始
@@ -1184,7 +1184,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m1w4d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS EDG.M
 DTSTART;TZID=Asia/Shanghai:20260117T200000
 DTEND;TZID=Asia/Shanghai:20260117T230000
@@ -1192,7 +1192,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年春季赛（常规赛 S组）。\n成都AG超玩会 vs 上海EDG.M。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 EDG.M\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第一轮）。\n成都AG超玩会 vs 上海EDG.M。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 EDG.M\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS EDG.M 即将开始
@@ -1206,7 +1206,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m2w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 桐乡情久
 DTSTART;TZID=Asia/Shanghai:20260125T200000
 DTEND;TZID=Asia/Shanghai:20260125T230000
@@ -1214,7 +1214,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年春季赛（常规赛 S组）。\n成都AG超玩会 vs 桐乡情久。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 2:3 桐乡情久\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第一轮）。\n成都AG超玩会 vs 桐乡情久。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 2:3 桐乡情久\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS 桐乡情久 即将开始
@@ -1228,7 +1228,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m3w3d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS TES.A
 DTSTART;TZID=Asia/Shanghai:20260130T200000
 DTEND;TZID=Asia/Shanghai:20260130T230000
@@ -1236,7 +1236,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年春季赛（常规赛 S组）。\n成都AG超玩会 vs 长沙TES.A。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 TES.A\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第一轮）。\n成都AG超玩会 vs 长沙TES.A。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 TES.A\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS TES.A 即将开始
@@ -1250,7 +1250,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m3w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 无锡TCG
 DTSTART;TZID=Asia/Shanghai:20260201T200000
 DTEND;TZID=Asia/Shanghai:20260201T230000
@@ -1258,7 +1258,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年春季赛（常规赛 S组）。\n成都AG超玩会 vs 无锡TCG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 无锡TCG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第一轮）。\n成都AG超玩会 vs 无锡TCG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 无锡TCG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS 无锡TCG 即将开始
@@ -1272,7 +1272,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m4w2d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS WE
 DTSTART;TZID=Asia/Shanghai:20260205T170000
 DTEND;TZID=Asia/Shanghai:20260205T200000
@@ -1280,7 +1280,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年春季赛（常规赛 A组）。\n成都AG超玩会 vs 西安WE。\n开赛时间：17:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 WE\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第二轮）。\n成都AG超玩会 vs 西安WE。\n开赛时间：17:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 WE\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS WE 即将开始
@@ -1294,7 +1294,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m4w4d1@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS Hero久竞
 DTSTART;TZID=Asia/Shanghai:20260207T140000
 DTEND;TZID=Asia/Shanghai:20260207T170000
@@ -1302,7 +1302,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年春季赛（常规赛 A组）。\n成都AG超玩会 vs 南通Hero久竞。\n开赛时间：14:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 2:3 Hero久竞\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第二轮）。\n成都AG超玩会 vs 南通Hero久竞。\n开赛时间：14:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 2:3 Hero久竞\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS Hero久竞 即将开始
@@ -1316,7 +1316,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m5w4d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS JDG
 DTSTART;TZID=Asia/Shanghai:20260213T200000
 DTEND;TZID=Asia/Shanghai:20260213T230000
@@ -1324,7 +1324,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:北京
-DESCRIPTION:KPL 2026年春季赛（常规赛 A组）。\n成都AG超玩会 vs 北京JDG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：北京\n比赛结果：AG 2:3 JDG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第二轮）。\n成都AG超玩会 vs 北京JDG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：北京\n比赛结果：AG 2:3 JDG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS JDG 即将开始
@@ -1338,7 +1338,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m6w4d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS RW侠
 DTSTART;TZID=Asia/Shanghai:20260227T170000
 DTEND;TZID=Asia/Shanghai:20260227T200000
@@ -1346,7 +1346,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年春季赛（常规赛 A组）。\n成都AG超玩会 vs 济南RW侠。\n开赛时间：17:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 RW侠\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第二轮）。\n成都AG超玩会 vs 济南RW侠。\n开赛时间：17:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 RW侠\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS RW侠 即将开始
@@ -1360,7 +1360,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m6w6d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS TES.A
 DTSTART;TZID=Asia/Shanghai:20260301T200000
 DTEND;TZID=Asia/Shanghai:20260301T230000
@@ -1368,7 +1368,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年春季赛（常规赛 A组）。\n成都AG超玩会 vs 长沙TES.A。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 TES.A\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第二轮）。\n成都AG超玩会 vs 长沙TES.A。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 TES.A\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS TES.A 即将开始
@@ -1382,7 +1382,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m6w8d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS TTG
 DTSTART;TZID=Asia/Shanghai:20260304T190000
 DTEND;TZID=Asia/Shanghai:20260304T220000
@@ -1404,7 +1404,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m7w1d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS WB
 DTSTART;TZID=Asia/Shanghai:20260307T200000
 DTEND;TZID=Asia/Shanghai:20260307T230000
@@ -1412,7 +1412,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年春季赛（常规赛 S组）。\n成都AG超玩会 vs 北京WB。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 WB\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第三轮）。\n成都AG超玩会 vs 北京WB。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:2 WB\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS WB 即将开始
@@ -1426,7 +1426,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m8w2d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS DYG
 DTSTART;TZID=Asia/Shanghai:20260312T200000
 DTEND;TZID=Asia/Shanghai:20260312T230000
@@ -1434,7 +1434,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年春季赛（常规赛 S组）。\n成都AG超玩会 vs 深圳DYG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 DYG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第三轮）。\n成都AG超玩会 vs 深圳DYG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:0 DYG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS DYG 即将开始
@@ -1448,7 +1448,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m8w4d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS KSG
 DTSTART;TZID=Asia/Shanghai:20260314T200000
 DTEND;TZID=Asia/Shanghai:20260314T230000
@@ -1456,7 +1456,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年春季赛（常规赛 S组）。\n成都AG超玩会 vs KSG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 1:3 KSG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第三轮）。\n成都AG超玩会 vs KSG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 1:3 KSG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS KSG 即将开始
@@ -1470,7 +1470,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m9w1d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS JDG
 DTSTART;TZID=Asia/Shanghai:20260318T200000
 DTEND;TZID=Asia/Shanghai:20260318T230000
@@ -1478,7 +1478,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年春季赛（常规赛 S组）。\n成都AG超玩会 vs 北京JDG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 2:3 JDG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第三轮）。\n成都AG超玩会 vs 北京JDG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 2:3 JDG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS JDG 即将开始
@@ -1492,7 +1492,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m9w4d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 狼队
 DTSTART;TZID=Asia/Shanghai:20260321T200000
 DTEND;TZID=Asia/Shanghai:20260321T230000
@@ -1500,7 +1500,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:重庆
-DESCRIPTION:KPL 2026年春季赛（常规赛 S组）。\n重庆狼队 vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：重庆\n比赛结果：AG 0:3 狼队\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年春季赛（常规赛第三轮）。\n重庆狼队 vs 成都AG超玩会。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：重庆\n比赛结果：AG 0:3 狼队\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS 狼队 即将开始
@@ -1514,7 +1514,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m10w1d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS JDG
 DTSTART;TZID=Asia/Shanghai:20260328T183000
 DTEND;TZID=Asia/Shanghai:20260328T213000
@@ -1536,7 +1536,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m10w1d9@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 狼队
 DTSTART;TZID=Asia/Shanghai:20260403T183000
 DTEND;TZID=Asia/Shanghai:20260403T213000
@@ -1558,7 +1558,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s1m10w1d11@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS KSG
 DTSTART;TZID=Asia/Shanghai:20260405T183000
 DTEND;TZID=Asia/Shanghai:20260405T213000
@@ -1580,10 +1580,10 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kcc2026m1w2d4@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS RW侠
 DTSTART;TZID=Asia/Shanghai:20260426T210000
-DTEND;TZID=Asia/Shanghai:20260427T000000
+DTEND;TZID=Asia/Shanghai:20260426T240000
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
@@ -1602,7 +1602,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kcc2026m2w3d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS WST
 DTSTART;TZID=Asia/Shanghai:20260502T190000
 DTEND;TZID=Asia/Shanghai:20260502T220000
@@ -1624,7 +1624,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kcc2026m3w2d2@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS EDG.M
 DTSTART;TZID=Asia/Shanghai:20260509T190000
 DTEND;TZID=Asia/Shanghai:20260509T220000
@@ -1646,7 +1646,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kcc2026m3w5d1@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 狼队
 DTSTART;TZID=Asia/Shanghai:20260512T190000
 DTEND;TZID=Asia/Shanghai:20260512T220000
@@ -1668,7 +1668,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kcc2026m3w9d1@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS JDG
 DTSTART;TZID=Asia/Shanghai:20260516T190000
 DTEND;TZID=Asia/Shanghai:20260516T220000
@@ -1690,7 +1690,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kcc2026m4w1d1@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 狼队
 DTSTART;TZID=Asia/Shanghai:20260523T160000
 DTEND;TZID=Asia/Shanghai:20260523T190000
@@ -1712,7 +1712,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s2m1w3d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS KSG
 DTSTART;TZID=Asia/Shanghai:20260619T200000
 DTEND;TZID=Asia/Shanghai:20260619T230000
@@ -1720,7 +1720,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年夏季赛（常规赛 B组）。\n成都AG超玩会 vs KSG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 KSG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年夏季赛（常规赛第一轮）。\n成都AG超玩会 vs KSG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 KSG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS KSG 即将开始
@@ -1734,7 +1734,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s2m1w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS WST
 DTSTART;TZID=Asia/Shanghai:20260621T200000
 DTEND;TZID=Asia/Shanghai:20260621T230000
@@ -1742,7 +1742,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年夏季赛（常规赛 B组）。\n成都AG超玩会 vs WST。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 WST\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年夏季赛（常规赛第一轮）。\n成都AG超玩会 vs WST。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 WST\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS WST 即将开始
@@ -1756,7 +1756,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s2m2w4d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS RW侠
 DTSTART;TZID=Asia/Shanghai:20260627T200000
 DTEND;TZID=Asia/Shanghai:20260627T230000
@@ -1764,7 +1764,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年夏季赛（常规赛 B组）。\n成都AG超玩会 vs 济南RW侠。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 0:3 RW侠\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年夏季赛（常规赛第一轮）。\n成都AG超玩会 vs 济南RW侠。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 0:3 RW侠\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS RW侠 即将开始
@@ -1778,7 +1778,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s2m3w3d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS 狼队
 DTSTART;TZID=Asia/Shanghai:20260703T200000
 DTEND;TZID=Asia/Shanghai:20260703T230000
@@ -1786,7 +1786,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年夏季赛（常规赛 B组）。\n成都AG超玩会 vs 重庆狼队。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年夏季赛（常规赛第一轮）。\n成都AG超玩会 vs 重庆狼队。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS 狼队 即将开始
@@ -1800,7 +1800,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:kpl-kpl2026s2m3w5d3@calistays.github
-DTSTAMP:20260703T101835Z
+DTSTAMP:20260703T104813Z
 SUMMARY:AG VS DYG
 DTSTART;TZID=Asia/Shanghai:20260705T200000
 DTEND;TZID=Asia/Shanghai:20260705T230000
@@ -1808,7 +1808,7 @@ STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
 LOCATION:成都
-DESCRIPTION:KPL 2026年夏季赛（常规赛 B组）。\n成都AG超玩会 vs 深圳DYG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n官方观赛入口：https://pvp.qq.com/match/kpl/
+DESCRIPTION:KPL 2026年夏季赛（常规赛第一轮）。\n成都AG超玩会 vs 深圳DYG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS DYG 即将开始

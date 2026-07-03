@@ -116,37 +116,29 @@ def opponent_of(match):
     return match["away"] if is_target_team(match["home"]) else match["home"]
 
 
-_GROUP_LETTER_RE = re.compile(r"^[A-Za-z]$")
-
-
 def extract_stage_label(raw):
-    """从官方接口的原始字段里，尽量还原这场比赛所在的赛事阶段，用于日历备注里的
-    "阶段：" 一行。只使用真实存在的字段，不猜测、不编造更细的阶段划分。
+    """从官方接口的原始字段里，尽量还原这场比赛所在的赛事阶段，用于日历备注里
+    赛事名称后的括号内容。只使用真实存在、且能确认含义的字段，不猜测、不编造。
 
     检查过官方接口实际返回的全部字段：只有 stage（阶段代号，如 "cgs1"）、
-    stage_name（阶段中文名，如 "常规赛第一轮"）、host_group/guest_group（单字母
-    组别，如 "S"/"A"/"B"）；没有 round / round_name / group_name / match_name /
-    match_title / desc 这些字段，季后赛也没有"胜者组/败者组/第几轮"的独立字段——
-    stage_name 对季后赛只给到"季后赛"这一级（决赛/卡位赛是单独的 stage_name）。
-    所以这里能做到的是：
+    stage_name（阶段中文名，如 "常规赛第一轮"）、host_group/guest_group/
+    match_group（单字母，如 "S"/"A"/"B"）；没有 round / round_name / group_name /
+    match_name / match_title / desc 这些字段。
 
-    - 常规赛（stage_name 里带"常规赛"）：如果能读到目标战队一侧的组别（单个字母，
-      比如 S/A/B），拼成"常规赛 S组"这样的形式；读不到组别就只返回"常规赛"。
-    - 其它阶段（季后赛/决赛/卡位赛/小组赛/淘汰赛/半决赛/单败淘汰赛/双败淘汰赛/
-      表演赛……）：原样返回官方给出的 stage_name，不做拆分——拆成"胜者组第一轮"
-      这种更细的说法在当前接口字段里没有依据，不编造。
-    - stage_name 本身缺失/为空时返回 None，调用方不应该显示"阶段："这一行。
+    host_group/guest_group 曾经被直接拼成"常规赛 B组"这样的文字，但核实后发现
+    这是错的：官方接口没有任何字段说明这个字母在"常规赛第一轮"这种语境下到底
+    代表什么——它可能是"第一组/第二组/第三组"的内部编码，也可能是跟"常规赛
+    第二轮"里公开使用的"S组/A组/B组"完全不同的另一套语义，只是恰好用了相同的
+    字母，无法用现有字段可靠区分。与其编造一个可能错误的"组别"，不如原样使用
+    官方已经明确给出的 stage_name（比如"常规赛第一轮"本身就已经说明是第几轮）。
+
+    所以这里不再尝试拼接组别：不管是常规赛、季后赛、决赛、卡位赛、小组赛、
+    淘汰赛、半决赛、单败/双败淘汰赛、表演赛……一律原样返回官方给出的
+    stage_name。stage_name 本身缺失/为空时返回 None，调用方不应该在赛事名称
+    后面加括号。
     """
     stage_name = (raw.get("stage_name") or "").strip()
-    if not stage_name:
-        return None
-    if "常规赛" in stage_name:
-        is_ag_home = is_target_team(raw.get("hname"))
-        group = raw.get("host_group") if is_ag_home else raw.get("guest_group")
-        if isinstance(group, str) and _GROUP_LETTER_RE.match(group):
-            return f"常规赛 {group.upper()}组"
-        return "常规赛"
-    return stage_name
+    return stage_name or None
 
 
 class ParseWarning(Exception):
