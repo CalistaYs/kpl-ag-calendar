@@ -17,15 +17,16 @@ DTSTART:19700101T000000
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:kpl-ag-2026-ksg-ag-1@calistays.github
-DTSTAMP:20260703T081622Z
+UID:kpl-kpl2026s2m1w3d3@calistays.github
+DTSTAMP:20260703T083446Z
 SUMMARY:AG VS KSG
 DTSTART;TZID=Asia/Shanghai:20260619T200000
 DTEND;TZID=Asia/Shanghai:20260619T230000
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
-DESCRIPTION:KPL 2026年夏季赛。\n成都AG超玩会 vs KSG。\n开赛时间：20:00（北京时间 GMT+8，具体时间以官方公布为准）。\n比赛结果：AG 3:1 KSG\n官方观赛入口：https://pvp.qq.com/match/kpl/
+LOCATION:成都
+DESCRIPTION:KPL 2026年夏季赛 常规赛第一轮。\n成都AG超玩会 vs KSG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 KSG\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS KSG 即将开始
@@ -38,15 +39,16 @@ TRIGGER:-PT30M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:kpl-ag-2026-wst-ag-1@calistays.github
-DTSTAMP:20260703T081622Z
+UID:kpl-kpl2026s2m1w5d3@calistays.github
+DTSTAMP:20260703T083446Z
 SUMMARY:AG VS WST
 DTSTART;TZID=Asia/Shanghai:20260621T200000
 DTEND;TZID=Asia/Shanghai:20260621T230000
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
-DESCRIPTION:KPL 2026年夏季赛。\n成都AG超玩会 vs WST。\n开赛时间：20:00（北京时间 GMT+8，具体时间以官方公布为准）。\n比赛结果：AG 3:1 WST\n官方观赛入口：https://pvp.qq.com/match/kpl/
+LOCATION:成都
+DESCRIPTION:KPL 2026年夏季赛 常规赛第一轮。\n成都AG超玩会 vs WST。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 3:1 WST\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS WST 即将开始
@@ -59,15 +61,16 @@ TRIGGER:-PT30M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:kpl-ag-2026-ag-rw-1@calistays.github
-DTSTAMP:20260703T081622Z
+UID:kpl-kpl2026s2m2w4d3@calistays.github
+DTSTAMP:20260703T083446Z
 SUMMARY:AG VS RW侠
 DTSTART;TZID=Asia/Shanghai:20260627T200000
 DTEND;TZID=Asia/Shanghai:20260627T230000
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
-DESCRIPTION:KPL 2026年夏季赛。\n成都AG超玩会 vs 济南RW侠。\n开赛时间：20:00（北京时间 GMT+8，具体时间以官方公布为准）。\n比赛结果：AG 0:3 RW侠\n官方观赛入口：https://pvp.qq.com/match/kpl/
+LOCATION:成都
+DESCRIPTION:KPL 2026年夏季赛 常规赛第一轮。\n成都AG超玩会 vs 济南RW侠。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n比赛结果：AG 0:3 RW侠\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS RW侠 即将开始
@@ -80,15 +83,16 @@ TRIGGER:-PT30M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:kpl-ag-2026-ag-1@calistays.github
-DTSTAMP:20260703T081622Z
+UID:kpl-kpl2026s2m3w3d3@calistays.github
+DTSTAMP:20260703T083446Z
 SUMMARY:AG VS 狼队
 DTSTART;TZID=Asia/Shanghai:20260703T200000
 DTEND;TZID=Asia/Shanghai:20260703T230000
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
-DESCRIPTION:KPL 2026年夏季赛。\n成都AG超玩会 vs 重庆狼队。\n开赛时间：20:00（北京时间 GMT+8，具体时间以官方公布为准）。\n官方观赛入口：https://pvp.qq.com/match/kpl/
+LOCATION:成都
+DESCRIPTION:KPL 2026年夏季赛 常规赛第一轮。\n成都AG超玩会 vs 重庆狼队。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS 狼队 即将开始
@@ -101,15 +105,16 @@ TRIGGER:-PT30M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:kpl-ag-2026-ag-dyg-1@calistays.github
-DTSTAMP:20260703T081622Z
+UID:kpl-kpl2026s2m3w5d3@calistays.github
+DTSTAMP:20260703T083446Z
 SUMMARY:AG VS DYG
 DTSTART;TZID=Asia/Shanghai:20260705T200000
 DTEND;TZID=Asia/Shanghai:20260705T230000
 STATUS:CONFIRMED
 TRANSP:OPAQUE
 URL:https://pvp.qq.com/match/kpl/
-DESCRIPTION:KPL 2026年夏季赛。\n成都AG超玩会 vs 深圳DYG。\n开赛时间：20:00（北京时间 GMT+8，具体时间以官方公布为准）。\n官方观赛入口：https://pvp.qq.com/match/kpl/
+LOCATION:成都
+DESCRIPTION:KPL 2026年夏季赛 常规赛第一轮。\n成都AG超玩会 vs 深圳DYG。\n开赛时间：20:00（北京时间 GMT+8，官方数据）。\n比赛地点：成都\n官方观赛入口：https://pvp.qq.com/match/kpl/
 BEGIN:VALARM
 ACTION:DISPLAY
 DESCRIPTION:AG VS DYG 即将开始
