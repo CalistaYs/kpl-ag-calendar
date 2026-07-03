@@ -57,6 +57,22 @@ def main():
     valid_season_ids = sorted(season_results.keys())
     print(f"[INFO] 本次有效赛事共 {len(valid_season_ids)} 个：{', '.join(valid_season_ids)}")
 
+    # 挑战者杯目前没有稳定命中的固定代号（历史上试过十几种猜测，只有 KCC{year}
+    # 命中过），所以不能只检查某个写死的 ID 是否在候选列表里，而是看这次实际抓到
+    # 的赛事里，有没有某个赛事的官方 season 标签带"挑战者杯"三个字。
+    challenge_cup_season_id = next(
+        (
+            season_id
+            for season_id, raw_matches in season_results.items()
+            if raw_matches and "挑战者杯" in (raw_matches[0].get("season") or "")
+        ),
+        None,
+    )
+    if challenge_cup_season_id:
+        print(f"[INFO] Found Challenge Cup seasonid: {challenge_cup_season_id}")
+    else:
+        print("[WARN] 未发现挑战者杯 seasonid")
+
     all_raw_matches = []
     for season_id, raw_matches in season_results.items():
         for raw in raw_matches:
@@ -64,6 +80,9 @@ def main():
         all_raw_matches.extend(raw_matches)
 
     matches, skipped = parse_matches(all_raw_matches, warn=print)
+
+    for m in matches:
+        print(f"[INFO] {m['home']} vs {m['away']}  阶段={m['stage_label'] or '未识别'}")
 
     ag_counts_by_season = {}
     for m in matches:

@@ -116,6 +116,39 @@ def opponent_of(match):
     return match["away"] if is_target_team(match["home"]) else match["home"]
 
 
+_GROUP_LETTER_RE = re.compile(r"^[A-Za-z]$")
+
+
+def extract_stage_label(raw):
+    """从官方接口的原始字段里，尽量还原这场比赛所在的赛事阶段，用于日历备注里的
+    "阶段：" 一行。只使用真实存在的字段，不猜测、不编造更细的阶段划分。
+
+    检查过官方接口实际返回的全部字段：只有 stage（阶段代号，如 "cgs1"）、
+    stage_name（阶段中文名，如 "常规赛第一轮"）、host_group/guest_group（单字母
+    组别，如 "S"/"A"/"B"）；没有 round / round_name / group_name / match_name /
+    match_title / desc 这些字段，季后赛也没有"胜者组/败者组/第几轮"的独立字段——
+    stage_name 对季后赛只给到"季后赛"这一级（决赛/卡位赛是单独的 stage_name）。
+    所以这里能做到的是：
+
+    - 常规赛（stage_name 里带"常规赛"）：如果能读到目标战队一侧的组别（单个字母，
+      比如 S/A/B），拼成"常规赛 S组"这样的形式；读不到组别就只返回"常规赛"。
+    - 其它阶段（季后赛/决赛/卡位赛/小组赛/淘汰赛/半决赛/单败淘汰赛/双败淘汰赛/
+      表演赛……）：原样返回官方给出的 stage_name，不做拆分——拆成"胜者组第一轮"
+      这种更细的说法在当前接口字段里没有依据，不编造。
+    - stage_name 本身缺失/为空时返回 None，调用方不应该显示"阶段："这一行。
+    """
+    stage_name = (raw.get("stage_name") or "").strip()
+    if not stage_name:
+        return None
+    if "常规赛" in stage_name:
+        is_ag_home = is_target_team(raw.get("hname"))
+        group = raw.get("host_group") if is_ag_home else raw.get("guest_group")
+        if isinstance(group, str) and _GROUP_LETTER_RE.match(group):
+            return f"常规赛 {group.upper()}组"
+        return "常规赛"
+    return stage_name
+
+
 class ParseWarning(Exception):
     """单条记录本身有问题（缺字段/时间格式非法），跳过这一条，不影响其它比赛。"""
 
@@ -160,7 +193,7 @@ def normalize_match(raw):
         "away_score": away_score if finished else None,
         "match_state": match_state,
         "location": (raw.get("region") or "").strip(),
-        "stage_name": (raw.get("stage_name") or "").strip(),
+        "stage_label": extract_stage_label(raw),
         "season_label": season_label,
         "bo_total": raw.get("bo_total"),
     }

@@ -66,13 +66,13 @@ def build_calendar(matches, dtstamp=None):
         location = m["location"]
 
         season_line = f"KPL {m['season_label']}".strip() if m["season_label"] else "KPL"
-        if m["stage_name"]:
-            season_line += f" {m['stage_name']}"
         desc_lines = [
             f"{season_line}。",
             f"{m['home']} vs {m['away']}。",
-            f"开赛时间：{start.strftime('%H:%M')}（北京时间 GMT+8，官方数据）。",
         ]
+        if m["stage_label"]:
+            desc_lines.append(f"阶段：{m['stage_label']}。")
+        desc_lines.append(f"开赛时间：{start.strftime('%H:%M')}（北京时间 GMT+8，官方数据）。")
         if location:
             desc_lines.append(f"比赛地点：{location}")
         if m["home_score"] is not None and m["away_score"] is not None:

@@ -30,10 +30,12 @@ BEIJING_TZ = dt.timezone(dt.timedelta(hours=8))
 #   KPL{year}S1 / S2 / S3 = 春季赛 / 夏季赛 / 年度总决赛（2024-2026 均验证过）
 #   EWC{year}   = 电竞世界杯（验证过 EWC2024，AG 参赛队名是 "All Gamers Global"）
 #   KIC{year}   = 国际邀请赛（验证过 KIC2025，不过该届没有 AG 参赛）
-# 下面几个还没验证到真实数据（比如"挑战者杯"的官方代号规律没找到），保留作为候选：
-# 猜不中只是被跳过、记一条日志，不影响其它已确认赛事；以后确认了新的代号规律，
-# 或官方上线了新赛事，加进这个列表（或用 SEASON_ID_PATTERNS 环境变量）就行，
-# 不需要改扫描逻辑本身。
+#   KCC{year}   = 挑战者杯（验证过 KCC2026，season 字段是 "2026年挑战者杯"，AG
+#                 参赛；试过 KPL{year}CC/KCHALLENGE/KTJB/KCUP/CC/HOK{year}CC/
+#                 HOK{year}CUP/CHALLENGERCUP/CHALLENGE 等十几种猜测，只有 KCC 命中）
+# 下面这个还没验证到真实数据，保留作为候选：猜不中只是被跳过、记一条日志，不影响
+# 其它已确认赛事；以后确认了新的代号规律，或官方上线了新赛事，加进这个列表
+# （或用 SEASON_ID_PATTERNS 环境变量）就行，不需要改扫描逻辑本身。
 DEFAULT_SEASON_ID_PATTERNS = [
     "KPL{year}S1",
     "KPL{year}S2",
@@ -41,8 +43,7 @@ DEFAULT_SEASON_ID_PATTERNS = [
     "KPL{year}S4",
     "EWC{year}",
     "KIC{year}",
-    "KPL{year}CC",
-    "KPL{year}WC",
+    "KCC{year}",
     "HOK{year}EWC",
 ]
 
