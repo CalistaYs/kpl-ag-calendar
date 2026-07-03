@@ -17,7 +17,7 @@ import sys
 
 from fetch import scan_all_seasons
 from ics_generator import build_calendar, extract_uids, merge_calendars
-from match_parser import TARGET_TEAM, parse_matches
+from match_parser import TARGET_TEAM, list_teams, parse_matches
 from validator import validate_matches
 
 CALENDAR_PATH = "calendar.ics"
@@ -73,6 +73,15 @@ def main():
             f"[INFO] {season_id}：全部战队比赛 {len(season_results[season_id])} 场，"
             f"目标战队（{TARGET_TEAM}）参赛 {ag_counts_by_season.get(season_id, 0)} 场"
         )
+        # 打印这个赛事出现过的全部队伍名，用 [方括号] 标出被识别为目标战队的那个——
+        # 万一目标战队换了个没配置过的国际/国内品牌名，is_target_team() 会静默认不出来，
+        # 但队名本身还是会出现在这份清单里，肉眼扫一遍就能发现"该有却没被标记"的名字，
+        # 照着补进 TARGET_TEAM_ALIASES 环境变量即可，不需要猜或翻原始数据。
+        team_flags = list_teams(season_results[season_id])
+        team_list = ", ".join(
+            f"[{name}]" if is_match else name for name, is_match in team_flags
+        )
+        print(f"[INFO] {season_id} 参赛队伍（{len(team_flags)} 支，[方括号]=已匹配目标战队）：{team_list}")
     print(f"[INFO] 全部赛事合计目标战队参赛场次：{len(matches)}；解析异常跳过：{skipped} 场")
 
     existing_text = read_existing_calendar()

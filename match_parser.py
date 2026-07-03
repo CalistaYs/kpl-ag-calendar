@@ -170,6 +170,24 @@ def is_ag_match(match):
     return is_target_team(match["home"]) or is_target_team(match["away"])
 
 
+def list_teams(raw_matches):
+    """从一批原始比赛记录（官方接口返回的 hname/gname）里提取出现过的全部队伍名，
+    标记每一个是否被识别为目标战队。返回按名称排序的 [(队名, 是否命中), ...]。
+
+    用途：万一目标战队以后换了个国际赛事/国内没见过的品牌名，is_target_team()
+    会静默认不出来、不会报错——这个函数配合调用方打印的"参赛队伍清单"日志，让人能
+    肉眼从名单里发现"这支应该是目标战队但没被标记"，从而知道该往 TARGET_TEAM_ALIASES
+    里补哪个别名。
+    """
+    teams = set()
+    for raw in raw_matches:
+        for key in ("hname", "gname"):
+            name = raw.get(key)
+            if name:
+                teams.add(name)
+    return sorted((name, is_target_team(name)) for name in teams)
+
+
 def parse_matches(raw_matches, warn=print):
     """解析全部原始记录，只保留目标战队参赛的场次；单条记录异常只警告不中断整体。
 
