@@ -47,13 +47,29 @@ def clean_token(text):
     return text
 
 
-def extract_tokens(page_html):
+ROW_RE = re.compile(r"<tr[^>]*>(.*?)</tr>", re.I | re.S)
+CELL_SPLIT_RE = re.compile(r"</t[dh]>", re.I)
+
+
+def extract_rows(page_html):
+    """按 <tr>/<td> 的真实行列结构解析赛程表，而不是把整页拍平成一条 token 流。
+
+    之前的实现会把所有单元格拼成一条线性 token 序列，导致"往后扫描 N 个 token 找比分"
+    的逻辑会跨越表格行边界，把积分榜、名单等不相关表格里的数字/队名误当成比赛数据。
+    按行处理后，每场比赛只在自己所在的 <tr> 内查找比分和对手，不会串到别的行/表格。
+    """
     text = re.sub(r"<script[\s\S]*?</script>", " ", page_html, flags=re.I)
     text = re.sub(r"<style[\s\S]*?</style>", " ", text, flags=re.I)
-    text = re.sub(r"</(?:td|th|tr|p|li|h[1-6]|div|br)>", "\n", text, flags=re.I)
-    text = re.sub(r"<[^>]+>", " ", text)
-    tokens = [clean_token(t) for t in re.split(r"[\n|]+", text)]
-    return [t for t in tokens if t]
+    rows = []
+    for row_html in ROW_RE.findall(text):
+        cells = []
+        for cell_html in CELL_SPLIT_RE.split(row_html):
+            cell_text = clean_token(re.sub(r"<[^>]+>", " ", cell_html))
+            if cell_text:
+                cells.append(cell_text)
+        if cells:
+            rows.append(cells)
+    return rows
 
 
 def is_team(token):
@@ -69,6 +85,7 @@ def norm_team(team):
         .replace("廣州", "广州")
         .replace("長沙", "长沙")
         .replace("競", "竞")
+        .replace("隊", "队")
     )
 
 
@@ -89,34 +106,39 @@ def opponent_for(home, away):
     return away if home == "成都AG超玩会" else home
 
 
-def parse_events(tokens, year):
+DATE_RE = re.compile(r"^(\d{1,2})月(\d{1,2})日$")
+SCORE_RE = re.compile(r"^\d+$")
+
+
+def parse_events(rows, year):
+    """按行解析赛程表。每行要么是跨列的日期行（1 个单元格），要么是一场比赛：
+    [队伍1, 队伍2]（未开赛，比分单元格为空）或 [队伍1, 比分1, 比分2, 队伍2]（已完赛）。
+    不符合这两种形状的行（积分榜、名单等其他表格）会被直接跳过，不会被误当成比赛。
+    """
     events = {}
     pair_occurrence = {}
     current_date = None
-    date_re = re.compile(r"^(\d{1,2})月(\d{1,2})日$")
-    for i, token in enumerate(tokens):
-        date_match = date_re.match(token)
-        if date_match:
-            month, day = map(int, date_match.groups())
-            current_date = f"{year}{month:02d}{day:02d}"
+    for row in rows:
+        if len(row) == 1:
+            date_match = DATE_RE.match(row[0])
+            if date_match:
+                month, day = map(int, date_match.groups())
+                current_date = f"{year}{month:02d}{day:02d}"
             continue
-        if not current_date or not is_team(token):
+        if not current_date:
             continue
-        team1 = token
-        score1 = score2 = None
-        team2 = None
-        for j in range(i + 1, min(i + 8, len(tokens))):
-            probe = tokens[j]
-            if re.fullmatch(r"\d+", probe):
-                if score1 is None:
-                    score1 = probe
-                elif score2 is None:
-                    score2 = probe
-                continue
-            if is_team(probe):
-                team2 = probe
-                break
-        if not team2:
+        if len(row) == 2 and is_team(row[0]) and is_team(row[1]):
+            team1, team2 = row
+            score1 = score2 = None
+        elif (
+            len(row) == 4
+            and is_team(row[0])
+            and SCORE_RE.match(row[1])
+            and SCORE_RE.match(row[2])
+            and is_team(row[3])
+        ):
+            team1, score1, score2, team2 = row
+        else:
             continue
         if team1 not in AG_NAMES and team2 not in AG_NAMES:
             continue
@@ -268,7 +290,7 @@ def main():
 
     try:
         page = fetch_page(wiki_url)
-        events = parse_events(extract_tokens(page), year)
+        events = parse_events(extract_rows(page), year)
     except Exception:
         events = []
 
