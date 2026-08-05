@@ -2,11 +2,23 @@ name: Update KPL AG calendar
 
 on:
   schedule:
-    - cron: '17 */6 * * *'
+    # 故意不用整点/半点（:00、:30），错开 GitHub Actions 在这两个时间点的排队高峰。
+    # smart_update.py 自己决定这次是完整扫描（固定在 UTC 0/6/12/18 点的 :07）、
+    # 只刷新临近/进行中比赛的比分（MATCH_REFRESH），还是直接跳过（SKIP）。
+    - cron: '7,37 * * * *'
   workflow_dispatch:
+    inputs:
+      full_refresh:
+        description: "强制执行完整扫描（忽略当前是否处于固定整点/比赛窗口）"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
+
+concurrency:
+  group: update-ag-calendar
+  cancel-in-progress: false
 
 jobs:
   update-calendar:
@@ -21,7 +33,11 @@ jobs:
           python-version: '3.x'
 
       - name: Refresh calendar
-        run: python update_calendar.py
+        env:
+          # 手动触发（workflow_dispatch）时按输入的开关决定；定时触发时这个表达式
+          # 短路成 false，交给 smart_update.py 自己按时间判断。
+          FORCE_FULL_REFRESH: ${{ github.event_name == 'workflow_dispatch' && inputs.full_refresh }}
+        run: python smart_update.py
 
       - name: Commit updated calendar
         run: |

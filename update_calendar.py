@@ -1,22 +1,19 @@
 #!/usr/bin/env python3
-"""成都AG超玩会全官方赛事日历 -> calendar.ics 同步入口。
+"""成都AG超玩会全官方赛事日历 -> calendar.ics 同步入口（完整扫描版）。
 
 数据来源（fetch.py）、字段解析与目标战队识别（match_parser.py）、数据校验
-（validator.py）、ICS 渲染与合并（ics_generator.py）拆在各自模块里，这里只负责
-把它们串起来，并严格执行"任何一步看起来不对就放弃更新、保留现有 calendar.ics"
-的安全更新流程。
+（validator.py）、ICS 渲染与合并（ics_generator.py）拆在各自模块里。核心的
+"给定一批赛事的原始数据，解析/校验/渲染/合并/写入"逻辑在 sync_calendar()，
+main() 只是在此之上加了"先做完整扫描拿到全部候选赛事的数据"这一步——这样
+smart_update.py 的高频模式可以直接复用 sync_calendar()，不需要另一套逻辑。
 
-每次运行会扫描一批候选赛事 ID（多个年份 x 多种赛事代号模板，覆盖 KPL 春/夏季赛、
-年度总决赛、电竞世界杯、国际邀请赛等，见 fetch.scan_all_seasons），凡是官方接口
-有数据的都会被收录，再从中筛出目标战队（默认成都AG超玩会，含国际赛事别名，见
-match_parser.is_target_team）参赛的场次，合并进 calendar.ics——不再局限于单一的
-"当前 KPL 赛季"，日历本身也不会因为赛季/赛事切换就丢失历史比赛。
+任何一步看起来不对，都会保留现有 calendar.ics、不覆盖。
 """
 import os
 import sys
 
 from fetch import scan_all_seasons
-from ics_generator import build_calendar, extract_uids, merge_calendars
+from ics_generator import build_calendar, extract_uids, merge_calendars, parse_calendar_events
 from match_parser import TARGET_TEAM, list_teams, parse_matches
 from validator import validate_matches
 
@@ -45,33 +42,34 @@ def uids_for_seasons(ics_text, season_ids):
     return {uid for uid in extract_uids(ics_text) if uid.startswith(prefixes)}
 
 
-def main():
-    season_results = scan_all_seasons(log=print)
+def _existing_final_states(ics_text):
+    """把 calendar.ics 解析成 {uid: {"score":..., "final":...}}，喂给
+    build_calendar() 做"比分两次确认"判断。calendar.ics 不存在，或者某场比赛
+    以前没有 X-MATCH-SCORE/X-MATCH-FINAL-SCORE（旧格式、或者这是新比赛），
+    在结果里就是缺这个 key——调用方（_resolve_final_score_state）会按
+    "没有历史记录"处理，不会报错。
+    """
+    if not ics_text:
+        return {}
+    return {ev["uid"]: {"score": ev["score"], "final": ev["final"]} for ev in parse_calendar_events(ics_text)}
+
+
+def sync_calendar(season_results, preserve_unchanged_dtstamp=False):
+    """给定 {season_id: 该赛事原始比赛列表}，跑完整的解析 -> 校验 -> 渲染 -> 合并
+    -> 写入流程。season_results 可以是"完整扫描"的全部结果，也可以是高频模式
+    只请求了少数几个赛事的结果——逻辑完全一样，不区分调用方是谁。
+
+    返回 True 表示"处理完成，没有发现问题"（包括"这批赛事里没有目标战队比赛，
+    没做任何改动"这种正常的空结果）；返回 False 表示校验没通过或者出现内部不
+    一致，调用方应该把这当成失败处理（非零退出），calendar.ics 在任何一种失败
+    路径下都不会被覆盖。
+    """
     if not season_results:
-        print(
-            "[ERROR] 扫描的所有候选赛事 ID 都没有拿到数据（可能签名失效、网络故障，"
-            "或官方接口发生了变化），保留现有 calendar.ics，退出。"
-        )
-        sys.exit(1)
+        print("[INFO] 没有传入任何赛事数据，保留现有 calendar.ics，不做改动。")
+        return True
 
     valid_season_ids = sorted(season_results.keys())
-    print(f"[INFO] 本次有效赛事共 {len(valid_season_ids)} 个：{', '.join(valid_season_ids)}")
-
-    # 挑战者杯目前没有稳定命中的固定代号（历史上试过十几种猜测，只有 KCC{year}
-    # 命中过），所以不能只检查某个写死的 ID 是否在候选列表里，而是看这次实际抓到
-    # 的赛事里，有没有某个赛事的官方 season 标签带"挑战者杯"三个字。
-    challenge_cup_season_id = next(
-        (
-            season_id
-            for season_id, raw_matches in season_results.items()
-            if raw_matches and "挑战者杯" in (raw_matches[0].get("season") or "")
-        ),
-        None,
-    )
-    if challenge_cup_season_id:
-        print(f"[INFO] Found Challenge Cup seasonid: {challenge_cup_season_id}")
-    else:
-        print("[WARN] 未发现挑战者杯 seasonid")
+    print(f"[INFO] 本次处理赛事共 {len(valid_season_ids)} 个：{', '.join(valid_season_ids)}")
 
     all_raw_matches = []
     for season_id, raw_matches in season_results.items():
@@ -92,16 +90,10 @@ def main():
             f"[INFO] {season_id}：全部战队比赛 {len(season_results[season_id])} 场，"
             f"目标战队（{TARGET_TEAM}）参赛 {ag_counts_by_season.get(season_id, 0)} 场"
         )
-        # 打印这个赛事出现过的全部队伍名，用 [方括号] 标出被识别为目标战队的那个——
-        # 万一目标战队换了个没配置过的国际/国内品牌名，is_target_team() 会静默认不出来，
-        # 但队名本身还是会出现在这份清单里，肉眼扫一遍就能发现"该有却没被标记"的名字，
-        # 照着补进 TARGET_TEAM_ALIASES 环境变量即可，不需要猜或翻原始数据。
         team_flags = list_teams(season_results[season_id])
-        team_list = ", ".join(
-            f"[{name}]" if is_match else name for name, is_match in team_flags
-        )
+        team_list = ", ".join(f"[{name}]" if is_match else name for name, is_match in team_flags)
         print(f"[INFO] {season_id} 参赛队伍（{len(team_flags)} 支，[方括号]=已匹配目标战队）：{team_list}")
-    print(f"[INFO] 全部赛事合计目标战队参赛场次：{len(matches)}；解析异常跳过：{skipped} 场")
+    print(f"[INFO] 本次合计目标战队参赛场次：{len(matches)}；解析异常跳过：{skipped} 场")
 
     existing_text = read_existing_calendar()
     existing_uids_in_scope = uids_for_seasons(existing_text, valid_season_ids)
@@ -112,21 +104,22 @@ def main():
     if not ok:
         for e in errors:
             print(f"[ERROR] {e}")
-        print("[ERROR] 数据校验未通过，保留现有 calendar.ics，不覆盖，退出。")
-        sys.exit(1)
+        print("[ERROR] 数据校验未通过，保留现有 calendar.ics，不覆盖。")
+        return False
 
     if not matches:
         print("[INFO] 本次没有扫描到任何目标战队的比赛，保留现有 calendar.ics，不做改动。")
-        return
+        return True
 
-    new_ics_text = build_calendar(matches)
+    existing_final_states = _existing_final_states(existing_text)
+    new_ics_text = build_calendar(matches, existing_final_states=existing_final_states)
     new_event_count = new_ics_text.count("BEGIN:VEVENT")
     if new_event_count != len(matches):
         print(
             f"[ERROR] 生成的 ICS 事件数（{new_event_count}）与解析到的比赛数"
-            f"（{len(matches)}）不一致，保留现有 calendar.ics，不覆盖，退出。"
+            f"（{len(matches)}）不一致，保留现有 calendar.ics，不覆盖。"
         )
-        sys.exit(1)
+        return False
 
     existing_total = existing_text.count("BEGIN:VEVENT") if existing_text else 0
     other_events_count = existing_total - previous_count  # 其它赛事、这次完全没触及的历史比赛数
@@ -136,12 +129,15 @@ def main():
     added_count = len(new_uids - existing_uids_in_scope)
     removed_count = len(existing_uids_in_scope - new_uids)
     print(
-        f"[INFO] 本次扫描到的赛事范围内：更新 {updated_count} 场，新增 {added_count} 场，"
+        f"[INFO] 本次处理的赛事范围内：更新 {updated_count} 场，新增 {added_count} 场，"
         f"移除 {removed_count} 场（比如已取消/不再由官方接口返回）"
     )
 
     if existing_text:
-        merged_text = merge_calendars(existing_text, new_ics_text, valid_season_ids)
+        merged_text = merge_calendars(
+            existing_text, new_ics_text, valid_season_ids,
+            preserve_unchanged_dtstamp=preserve_unchanged_dtstamp,
+        )
     else:
         merged_text = new_ics_text
     merged_event_count = merged_text.count("BEGIN:VEVENT")
@@ -150,15 +146,51 @@ def main():
     if merged_event_count != expected_count:
         print(
             f"[ERROR] 合并后事件数（{merged_event_count}）与预期不一致（其它赛事历史比赛 "
-            f"{other_events_count} 场 + 本次扫描到的比赛 {new_event_count} 场 = "
-            f"{expected_count} 场），合并逻辑异常，保留现有 calendar.ics，不覆盖，退出。"
+            f"{other_events_count} 场 + 本次处理的比赛 {new_event_count} 场 = "
+            f"{expected_count} 场），合并逻辑异常，保留现有 calendar.ics，不覆盖。"
         )
-        sys.exit(1)
+        return False
+
+    changed = merged_text != existing_text
+    print(f"[INFO] calendar.ics 是否发生变化：{'是' if changed else '否'}")
+    if not changed:
+        return True
 
     with open(NEW_CALENDAR_PATH, "w", encoding="utf-8", newline="\n") as f:
         f.write(merged_text)
     os.replace(NEW_CALENDAR_PATH, CALENDAR_PATH)
     print(f"[INFO] 最终合并后 calendar.ics 共有 {merged_event_count} 场比赛。")
+    return True
+
+
+def main():
+    season_results = scan_all_seasons(log=print)
+    if not season_results:
+        print(
+            "[ERROR] 扫描的所有候选赛事 ID 都没有拿到数据（可能签名失效、网络故障，"
+            "或官方接口发生了变化），保留现有 calendar.ics，退出。"
+        )
+        sys.exit(1)
+
+    # 挑战者杯目前没有稳定命中的固定代号，不能只检查某个写死的 ID 是否在候选列表
+    # 里，而是看这次实际扫描到的赛事里，有没有某个赛事的官方 season 标签带"挑战者
+    # 杯"三个字。只在完整扫描（这里）里判断——高频模式一次只处理一两个已经确定的
+    # 赛事，不是一次新的"发现"扫描，打这条日志没有意义。
+    challenge_cup_season_id = next(
+        (
+            season_id
+            for season_id, raw_matches in season_results.items()
+            if raw_matches and "挑战者杯" in (raw_matches[0].get("season") or "")
+        ),
+        None,
+    )
+    if challenge_cup_season_id:
+        print(f"[INFO] Found Challenge Cup seasonid: {challenge_cup_season_id}")
+    else:
+        print("[WARN] 未发现挑战者杯 seasonid")
+
+    ok = sync_calendar(season_results)
+    sys.exit(0 if ok else 1)
 
 
 if __name__ == "__main__":

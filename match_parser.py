@@ -58,6 +58,32 @@ _DOMESTIC_SEASON_RE = re.compile(r"^KPL\d{4}S\d+", re.I)
 # 1=未开始 3=进行中 4=已结束。只有 4 才认为比分是"官方最终比分"。
 MATCH_STATE_FINISHED = 4
 
+
+def is_legal_final_score(home_score, away_score, bo_total):
+    """校验一个比分是否是"赛制上合法的最终比分"。
+
+    BOn 赛制里先赢下 ceil(n/2) 局即获胜、比赛立即结束，所以合法的最终比分只能是
+    "胜方精确等于 ceil(n/2)，负方严格小于这个数"——用来拦截"官方状态已经标成
+    已完赛，但比分其实还是中间比分"这类数据不同步的情况（比如 BO5 却显示 1:0）。
+
+    返回 True / False / None：
+    - bo_total 不是有效正整数（赛制未知）时返回 None——"无法判断"，不等于"不合法"，
+      调用方应该据此继续观察（继续高频刷新、不要贸然确认），而不是当场否决。
+    - 明确合法 / 不合法时返回 True / False；负数、非整数、平局都算不合法。
+    """
+    if not isinstance(bo_total, int) or isinstance(bo_total, bool) or bo_total <= 0:
+        return None
+    for score in (home_score, away_score):
+        if not isinstance(score, int) or isinstance(score, bool) or score < 0:
+            return False
+    if home_score == away_score:
+        return False
+    win_target = (bo_total + 1) // 2
+    winner_score = max(home_score, away_score)
+    loser_score = min(home_score, away_score)
+    return winner_score == win_target and loser_score < win_target
+
+
 _SEPARATOR_RE = re.compile(r"[\s._-]+")
 
 
@@ -173,7 +199,7 @@ def normalize_match(raw):
         and away_score is not None
     )
 
-    season_label = (raw.get("season") or "").replace("KPL", "")  # "2026年KPL夏季赛" -> "2026年夏季赛"
+    season_label = (raw.get("season") or "").strip()  # 官方赛事展示名，原样使用，不做任何改写
 
     return {
         "scheduleid": scheduleid,
