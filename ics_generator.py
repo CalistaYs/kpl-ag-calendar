@@ -165,31 +165,18 @@ def build_calendar(matches, dtstamp=None, existing_final_states=None):
             f"赛事：{m['season_label']}" if m["season_label"] else "赛事：未知",
             f"阶段：{m['stage_label']}" if m["stage_label"] else "阶段：未知",
             f"赛制：{_format_bo_label(m.get('bo_total'))}",
-            "",
-            "对阵：",
-            f"{m['home']} vs {m['away']}",
-            "",
-            "状态：",
-            status_label,
-            "",
+            f"对阵：{m['home']} vs {m['away']}",
         ]
         if status_label == "已完赛" and has_display_score:
             is_ag_home = is_target_team(m["home"])
             ag_score = display_home if is_ag_home else display_away
             opp_score = display_away if is_ag_home else display_home
-            desc_lines.append("最终比分：")
-            desc_lines.append(f"{AG_SHORT_NAME} {ag_score} : {opp_score} {opponent_short}")
+            desc_lines.append(f"最终比分：{AG_SHORT_NAME} {ag_score} : {opp_score} {opponent_short}")
         else:
             time_label = "预计开赛" if status_label == "未开赛" else "开赛时间"
-            desc_lines.append(f"{time_label}：")
-            desc_lines.append(f"{start.strftime('%Y-%m-%d %H:%M')}（北京时间 GMT+8）")
-        desc_lines.append("")
+            desc_lines.append(f"{time_label}：{start.strftime('%Y-%m-%d %H:%M')}（北京时间 GMT+8）")
         if location:
-            desc_lines.append("比赛地点：")
-            desc_lines.append(location)
-            desc_lines.append("")
-        desc_lines.append("官方观赛：")
-        desc_lines.append(KPL_URL)
+            desc_lines.append(f"比赛地点：{location}")
         detail = "\n".join(desc_lines)
 
         alarm_description = f"{summary} 即将开始"
