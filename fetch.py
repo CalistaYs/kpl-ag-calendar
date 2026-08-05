@@ -28,7 +28,22 @@ BEIJING_TZ = dt.timezone(dt.timedelta(hours=8))
 
 # 已经用真实请求验证过、确实能拿到数据的赛事代号模板：
 #   KPL{year}S1 / S2 / S3 = 春季赛 / 夏季赛 / 年度总决赛（2024-2026 均验证过）
-#   EWC{year}   = 电竞世界杯（验证过 EWC2024，AG 参赛队名是 "All Gamers Global"）
+#   EWC{year}   = Esports World Cup 里的王者荣耀项目，仅 2024 年用这个前缀
+#                 （验证过 EWC2024，38 场比赛，season 字段是纯代号 "EWC2024"，
+#                 AG 参赛队名是 "All Gamers Global"）。2025/2026 年用这个前缀
+#                 查不到任何数据（返回空列表），不是赛事没办，是官方换了代号——
+#                 见下面 KWC{year}。这一项继续保留，用来兼容 2024 年的历史数据，
+#                 以及万一以后哪年官方又用回这个前缀。
+#   KWC{year}   = 同一个 Esports World Cup 王者荣耀项目，2025 年起官方接口改用
+#                 这个前缀（验证过 KWC2025 37 场、KWC2026 34 场，AG 都参赛，
+#                 hname/gname 字段直接就是 "AG"，现有 is_target_team() 的整词
+#                 匹配已经能识别，不需要额外加别名）。两届的 season 展示名称不
+#                 一样——KWC2025 是"2025王者荣耀电竞世界杯"，KWC2026 是"2026
+#                 王者荣耀电竞世俱杯"——用词不统一（"世界杯"/"世俱杯"），所以
+#                 千万不要用展示名称字符串去判断是不是这个赛事，只能认 seasonid
+#                 前缀。EWC{year} 和 KWC{year} 都保留、互不替代：请求量不大，
+#                 猜不中的那个自然会在扫描日志里显示"无数据，跳过"，不影响其它
+#                 已确认赛事。
 #   KIC{year}   = 国际邀请赛（验证过 KIC2025，不过该届没有 AG 参赛）
 #   KCC{year}   = 挑战者杯（验证过 KCC2026，season 字段是 "2026年挑战者杯"，AG
 #                 参赛；试过 KPL{year}CC/KCHALLENGE/KTJB/KCUP/CC/HOK{year}CC/
@@ -42,6 +57,7 @@ DEFAULT_SEASON_ID_PATTERNS = [
     "KPL{year}S3",
     "KPL{year}S4",
     "EWC{year}",
+    "KWC{year}",
     "KIC{year}",
     "KCC{year}",
     "HOK{year}EWC",
