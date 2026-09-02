@@ -25,10 +25,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.x'
 
@@ -50,3 +50,15 @@ jobs:
             git commit -m "Update Chengdu AG calendar"
             git push
           fi
+
+      - name: Sync calendar repository to Gitee
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+        run: |
+          if [ -z "$GITEE_TOKEN" ]; then
+            echo "::warning::GITEE_TOKEN is not configured; skipping Gitee sync"
+            exit 0
+          fi
+
+          git remote add gitee "https://CalistaYs:${GITEE_TOKEN}@gitee.com/CalistaYs/kpl-ag-calendar.git"
+          git push gitee HEAD:main
