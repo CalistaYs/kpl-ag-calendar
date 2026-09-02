@@ -1,6 +1,11 @@
 name: Update KPL AG calendar
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/update-calendar.yml'
   schedule:
     # 故意不用整点/半点（:00、:30），错开 GitHub Actions 在这两个时间点的排队高峰。
     # smart_update.py 自己决定这次是完整扫描（固定在 UTC 0/6/12/18 点的 :07）、
