@@ -56,6 +56,7 @@ jobs:
             git push
           fi
 
+      # 国内镜像供无法稳定访问 GitHub Raw 的日历客户端订阅。
       - name: Sync calendar repository to Gitee
         env:
           GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
